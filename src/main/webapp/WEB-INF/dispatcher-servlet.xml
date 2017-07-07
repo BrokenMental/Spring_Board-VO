@@ -5,6 +5,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <!-- 어노테이션을 사용할 수 있게끔 하는 설정 -->
+    <!-- 500에러가 날 때, "Cannot resolve reference to bean 'cacheManager' while setting bean property 'cacheManager';" 와 같은 에러 문구가 있다면 import를 잘못해서 그러니 다시 해주자.-->
     <mvc:annotation-driven/>
 
     <!-- 해당 패키지의 모듈(@Controller를 갖고있는 클래스)들을 검색하여 로드하라는 의미 -->
