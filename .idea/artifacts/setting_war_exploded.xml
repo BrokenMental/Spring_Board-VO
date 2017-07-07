@@ -1,0 +1,20 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="setting:war exploded">
+    <output-path>$PROJECT_DIR$/target/setting</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="setting" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Spring MVC-4.3.9.RELEASE" />
+          <element id="library" level="project" name="Spring-4.3.9.RELEASE" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/target/setting/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="setting/web/Web" />
+    </root>
+  </artifact>
+</component>

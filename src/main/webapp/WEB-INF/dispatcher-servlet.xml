@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 어노테이션을 사용할 수 있게끔 하는 설정 -->
+    <mvc:annotation-driven/>
+
+    <!-- 해당 패키지의 모듈(@Controller를 갖고있는 클래스)들을 검색하여 로드하라는 의미 -->
+    <context:component-scan base-package="com.setting"/>
+
+    <!-- property의 정보를 가지고 Controller에서 반환되는 ModelAndView 정보를 가지고 View(jsp 파일)를 찾는 물리적인 경로를 구성한다는 의미 -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!-- Controller에서 반환되는 파라미터를 연결하는 접두사(경로)와 접미사(확장자명) -->
+        <property name="prefix" value="WEB-INF/views/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+</beans>
