@@ -1,7 +1,13 @@
-package com.setting;
+package com.setting.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.context.support.StaticApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.Locale;
+
 
 /**
  * Created by Jinuk on 2017-07-07.
@@ -9,9 +15,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller // 아래의 클래스가 컨트롤러임을 선언
 public class MainController {
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
     @RequestMapping(value = "/") // 괄호안에 해당하는 경로의 파일들에 아래 메서드를 적용한다.
-    public String test(){
-        return "index"; // 해당 파일명으로 반환
+    public String test(Locale locale){
+        //logger.debug("debug");
+        logger.info("=========================================");
+        logger.info("Welcome home! The client locale is {}.", locale);
+        logger.info("=========================================");
+
+        return "index"; // 컨트롤러 실행시 매핑 위치에 연결되어야 할 파일명 반환
     }
 
     /*@RequestMapping("/hello")

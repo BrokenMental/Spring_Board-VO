@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- 서버 정보를 해당 패턴으로 띄워주기 위해 존재한다. -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 딱히 필요없는 부분인것 같다. -->
+    <!--<logger name="com.setting.controller" level="INFO"></logger>
+    <logger name="org.springframework.context" level="DEBUG"></logger>-->
+
+    <!-- appender의 name을 찾아가 로그를 띄워준다. -->
+    <root level="debug">
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>
