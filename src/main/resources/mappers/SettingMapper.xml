@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.setting.mappers.SettingMapper">
+
+    <resultMap id="userResultMap" type="com.setting.domain.SettingVO">
+        <result property="idx" column="IDX"/>
+        <result property="title" column="TITLE"/>
+        <result property="hit_cnt" column="HIT_CNT"/>
+        <result property="crea_dtm" column="CREA_DTM"/>
+    </resultMap>
+
+    <select id="list" resultMap="userResultMap">
+        <![CDATA[
+            SELECT
+                IDX,
+                TITLE,
+                HIT_CNT,
+                CREA_DTM
+            FROM
+                SETTING
+            WHERE
+               DEL_GB = 'N'
+            ORDER BY IDX DESC
+        ]]>
+    </select>
+</mapper>

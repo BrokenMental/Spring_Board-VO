@@ -1,11 +1,15 @@
 package com.setting.controller;
 
+import com.setting.domain.SettingVO;
+import com.setting.service.SettingService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.support.StaticApplicationContext;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.inject.Inject;
 import java.util.Locale;
 
 
@@ -15,14 +19,20 @@ import java.util.Locale;
 
 @Controller // 아래의 클래스가 컨트롤러임을 선언
 public class MainController {
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @RequestMapping(value = "/") // 괄호안에 해당하는 경로의 파일들에 아래 메서드를 적용한다.
-    public String test(Locale locale){
+    @Inject
+    private SettingService service;
+
+    @RequestMapping(value = "/", method = RequestMethod.GET) // 괄호안에 해당하는 경로의 파일들에 아래 메서드를 적용한다.
+    public String list(SettingVO set, Model model, Locale locale) throws Exception{
         //logger.debug("debug");
         logger.info("=========================================");
         logger.info("Welcome home! The client locale is {}.", locale);
+        logger.info(set.toString());
         logger.info("=========================================");
+
+        model.addAttribute("list", service.list(set));
 
         return "index"; // 컨트롤러 실행시 매핑 위치에 연결되어야 할 파일명 반환
     }

@@ -8,6 +8,17 @@
         </layout>
     </appender>
 
+    <!-- Query Loggers -->
+    <logger name="jdbc.sqlonly" additivity="false">
+        <level value="debug"/>
+        <appender-ref ref="console-infolog"/>
+    </logger>
+
+    <logger name="jdbc.resultsettable" additivity="false">
+        <level value="debug"/>
+        <appender-ref ref="console"/>
+    </logger>
+
     <!-- 있으나 없으나 실행된다. -->
     <!--<logger name="com.setting.controller.MainController">
         <level value="info"/>
@@ -18,7 +29,7 @@
     </category>
 
     <root>
-        <priority value ="debug" />
+        <priority value ="trace" />
         <appender-ref ref="STDOUT" />
     </root>
 </log4j:configuration>

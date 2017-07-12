@@ -10,8 +10,12 @@
     <!-- 500에러가 날 때, "Cannot resolve reference to bean 'cacheManager' while setting bean property 'cacheManager';" 와 같은 에러 문구가 있다면 import를 잘못해서 그러니 다시 해주자.-->
     <mvc:annotation-driven/>
 
-    <!-- 해당 패키지의 모듈(@Controller를 갖고있는 클래스)들을 검색하여 로드하라는 의미 -->
-    <context:component-scan base-package="com.setting.controller"/>
+    <mvc:resources mapping="/resources/**" location="/"/>
+
+    <!-- 해당 패키지의 모듈(Bean)들을 검색하여 로드하라는 의미 -->
+    <context:component-scan base-package="com.setting"/>
+    <!-- <context:component-scan base-package="com.setting.controller"/>로 해줄 경우,
+    controller만 검색하기 때문에 그 외(domain,persistence,service 등)의 Bean 들이 인식되지 않을 수가 있다.-->
 
     <!-- property의 정보를 가지고 Controller에서 반환되는 ModelAndView 정보를 가지고 View(jsp 파일)를 찾는 물리적인 경로를 구성한다는 의미 -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
