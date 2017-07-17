@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.inject.Inject;
+import java.util.Locale;
 
 /**
  * Created by Jinuk on 2017-07-17.
@@ -21,6 +22,15 @@ public class BoardController {
 
     @Inject
     SettingService service;
+
+    @RequestMapping(value = "/ListBoard", method = RequestMethod.GET)
+    public void ListBoardGET(SettingVO set, Model model, Locale locale) throws Exception{
+        logger.info("=========================================");
+        logger.info("Welcome home! The client locale is {}.", locale);
+        logger.info("=========================================");
+
+        model.addAttribute("list", service.list(set));
+    }
 
     @RequestMapping(value = "/NewBoard", method = RequestMethod.GET)
     public void NewBoardGET() throws Exception{
