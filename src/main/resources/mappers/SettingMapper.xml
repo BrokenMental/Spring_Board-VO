@@ -27,4 +27,9 @@
             ORDER BY IDX DESC
         ]]>
     </select>
+
+    <insert id="write">
+        INSERT INTO SETTING (TITLE, CONTENTS)
+        VALUES(#{Title}, #{Contents})
+    </insert>
 </mapper>

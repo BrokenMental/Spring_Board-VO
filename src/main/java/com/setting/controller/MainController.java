@@ -48,4 +48,5 @@ public class MainController {
         // 리턴값의 첫번째 매개변수에 해당하는 파일을 찾아 세번째 변수를 두번째 모델의 이름으로 전달한다.
         return new ModelAndView("spring", "message", message);
     }*/
+
 }

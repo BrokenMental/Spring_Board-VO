@@ -16,7 +16,6 @@ import java.util.Map;
 
 @Service
 public class SettingServiceImpl implements SettingService{
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Inject
     private SettingDAO dao;
@@ -24,5 +23,10 @@ public class SettingServiceImpl implements SettingService{
     @Override
     public List<SettingVO> list(SettingVO set) throws Exception {
         return dao.list(set);
+    }
+
+    @Override
+    public void Write(SettingVO set) throws Exception {
+        dao.Write(set);
     }
 }

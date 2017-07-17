@@ -16,7 +16,6 @@ import java.util.Map;
 
 @Repository
 public class SettingDAOImpl implements SettingDAO{
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private static String namespace = "com.setting.mappers.SettingMapper";
 
@@ -26,5 +25,10 @@ public class SettingDAOImpl implements SettingDAO{
     @Override
     public List<SettingVO> list(SettingVO set) throws Exception {
         return session.selectList(namespace +".list", set);
+    }
+
+    @Override
+    public void Write(SettingVO set) throws Exception {
+        session.insert(namespace + ".write", set);
     }
 }
