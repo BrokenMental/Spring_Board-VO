@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.inject.Inject;
 import java.util.Locale;
 
-
 /**
  * Created by Jinuk on 2017-07-07.
  */
@@ -24,7 +23,7 @@ public class MainController {
     @Inject
     private SettingService service;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET) // 괄호안에 해당하는 경로의 파일들에 아래 메서드를 적용한다.
+    @RequestMapping(value = "/", method = RequestMethod.GET) // 괄호안(value 경로)에 해당하는 파일들에 아래 메서드를 적용한다.
     public String list(SettingVO set, Model model, Locale locale) throws Exception{
         //logger.debug("debug");
         logger.info("=========================================");
