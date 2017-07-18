@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -15,10 +16,17 @@ import java.util.Map;
  */
 
 @Service
-public class SettingServiceImpl implements SettingService{
+public class SettingServiceImpl implements SettingService {
 
     @Inject
     private SettingDAO dao;
+
+    public String time() {
+        java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyy.MM.dd. HH:mm:ss"); // yyyy.MM.dd.
+        // HH:mm:ss
+        String now = formatter.format(new Date());
+        return now;
+    }
 
     @Override
     public List<SettingVO> list(SettingVO set) throws Exception {
@@ -26,7 +34,18 @@ public class SettingServiceImpl implements SettingService{
     }
 
     @Override
-    public void Write(SettingVO set) throws Exception {
-        dao.Write(set);
+    public SettingVO read(Integer idx) throws Exception {
+        return dao.read(idx);
+    }
+
+    @Override
+    public void write(SettingVO set) throws Exception {
+        set.setCrea_dtm(time());
+        dao.write(set);
+    }
+
+    @Override
+    public void modify(SettingVO set) throws Exception {
+        dao.modify(set);
     }
 }

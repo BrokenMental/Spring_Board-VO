@@ -20,16 +20,28 @@
         ]]>
     </select>-->
     <select id="list" resultType="SettingVO">
-        <![CDATA[
-            SELECT IDX, TITLE, HIT_CNT, CREA_DTM
-            FROM SETTING
-            WHERE DEL_GB = 'N'
-            ORDER BY IDX DESC
-        ]]>
+        SELECT IDX, TITLE, HIT_CNT, CREA_DTM
+        FROM SETTING
+        WHERE DEL_GB = 'N'
+        ORDER BY IDX DESC
+    </select>
+
+    <select id="read" resultType="SettingVO">
+        SELECT IDX, TITLE, CONTENTS
+        FROM SETTING
+        WHERE IDX = #{IDX}
     </select>
 
     <insert id="write">
         INSERT INTO SETTING (TITLE, CONTENTS)
         VALUES(#{Title}, #{Contents})
     </insert>
+    
+    <update id="modify">
+        UPDATE SETTING
+        SET
+            TITLE = #{Title},
+            CONTENTS = #{Contents}
+        WHERE IDX = #{Idx}
+    </update>
 </mapper>

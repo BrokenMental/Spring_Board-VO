@@ -23,9 +23,6 @@ public class MainController {
     @RequestMapping(value = "/", method = RequestMethod.GET) // 괄호안(value 경로)에 해당하는 파일들에 아래 메서드를 적용한다.
     public String list() throws Exception{
         //logger.debug("debug");
-        logger.info("=========================================");
-        logger.info("=============|INDEX PAGE|================");
-        logger.info("=========================================");
 
         return "redirect:/Board/ListBoard";
         //return "index"; // 컨트롤러 실행시 매핑 위치에 연결되어야 할 파일명 반환

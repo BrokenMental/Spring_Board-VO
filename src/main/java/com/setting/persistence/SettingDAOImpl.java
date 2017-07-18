@@ -28,7 +28,17 @@ public class SettingDAOImpl implements SettingDAO{
     }
 
     @Override
-    public void Write(SettingVO set) throws Exception {
+    public SettingVO read(Integer idx) throws Exception {
+        return session.selectOne(namespace + ".read", idx);
+    }
+
+    @Override
+    public void write(SettingVO set) throws Exception {
         session.insert(namespace + ".write", set);
+    }
+
+    @Override
+    public void modify(SettingVO set) throws Exception {
+        session.update(namespace + ".modify", set);
     }
 }

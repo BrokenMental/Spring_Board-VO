@@ -10,5 +10,8 @@ import java.util.Map;
  */
 public interface SettingDAO {
     List<SettingVO> list(SettingVO set) throws Exception;
-    void Write(SettingVO set) throws Exception;
+    SettingVO read(Integer idx) throws Exception;
+
+    void write(SettingVO set) throws Exception;
+    void modify(SettingVO set) throws Exception;
 }

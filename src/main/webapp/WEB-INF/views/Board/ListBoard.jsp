@@ -31,18 +31,27 @@
     </tr>
     </thead>
     <tbody>
-    <c:forEach items="${list}" var="row">
+    <c:forEach items="${list}" var="list">
+        <c:choose>
+            <c:when test="list.title == null">
+                <tr>
+                    <td colspan="4"><h1>데이터가 없습니다.</h1></td>
+                </tr>
+            </c:when>
+        </c:choose>
         <tr>
-            <td>${row.idx}</td>
-            <td>${row.title}</td>
-            <td>${row.crea_dtm}</td>
-            <td>${row.hit_cnt}</td>
+            <td>${list.idx}</td>
+            <td><a href="ReadBoard?idx=${list.idx}">${list.title}</a></td>
+            <td>${list.crea_dtm}</td>
+            <td>${list.hit_cnt}</td>
         </tr>
     </c:forEach>
     </tbody>
     <tfoot>
     <tr>
-        <td colspan="4" style="text-align: right"><button id="btnNew">New</button></td>
+        <td colspan="4" style="text-align: right">
+            <button id="btnNew">New</button>
+        </td>
     </tr>
     </tfoot>
 </table>
@@ -50,9 +59,9 @@
 </html>
 <script>
     $(document).ready(
-        function() {
-            $('#btnNew').on('click', function() {
-                self.location = "/Board/NewBoard";
+        function () {
+            $('#btnNew').on('click', function () {
+                self.location = "NewBoard";
             });
         });
 </script>

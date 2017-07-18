@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
+    <!-- logback이 있는경우 log4j는 필요없다. -->
     <!-- 서버 정보를 해당 패턴으로 띄워주기 위해 존재한다. -->
-    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
         <!-- encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
         <encoder>
-            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            <pattern>%d{HH:mm:ss.SSS} %-5level %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
 
-    <!-- 딱히 필요없는 부분인것 같다. -->
-    <!--<logger name="com.setting.controller" level="INFO"></logger>
-    <logger name="org.springframework.context" level="DEBUG"></logger>-->
+    <!-- Query Log -->
+    <logger name="com.setting.mappers" level="DEBUG"/>
 
     <!-- appender의 name을 찾아가 로그를 띄워준다. -->
-    <root level="debug">
-        <appender-ref ref="STDOUT" />
+    <!-- level이 INFO일 경우 INFO와 관련된것을, DEBUG일 경우 DEBUG와 관련된 것을 띄워준다. -->
+    <root level="INFO">
+        <!-- appender의 name(console,stdout)을 보고 실행한다. -->
+        <appender-ref ref="console" />
     </root>
 </configuration>
