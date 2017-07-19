@@ -51,4 +51,9 @@ public class SettingDAOImpl implements SettingDAO{
     public void hit(Integer hit) throws Exception {
         session.update(namespace + ".hit", hit);
     }
+
+    @Override
+    public void rewrite(SettingVO set) throws Exception {
+        session.insert(namespace + ".rewrite", set);
+    }
 }

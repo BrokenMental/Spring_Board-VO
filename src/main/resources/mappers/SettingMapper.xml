@@ -11,7 +11,7 @@
     </select>
 
     <select id="read" resultType="SettingVO">
-        SELECT BNO, TITLE, CONTENTS, HIT
+        SELECT BNO, TITLE, CONTENTS, HIT, PNO, CNO, DEPTH
         FROM SETTING
         WHERE BNO = #{bno}
     </select>
@@ -41,4 +41,9 @@
         SET HIT = (SELECT HIT+1 FROM (SELECT HIT FROM SETTING WHERE BNO = #{bno}) as x)
         WHERE BNO = #{bno}
     </update>
+
+    <insert id="rewrite">
+        INSERT INTO SETTING (TITLE, CONTENTS, PNO, CNO, DEPTH)
+        VALUES(#{title}, #{contents}, #{bno}, #{cno}+1, #{depth}+1)
+    </insert>
 </mapper>

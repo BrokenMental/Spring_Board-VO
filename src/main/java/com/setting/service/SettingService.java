@@ -16,4 +16,5 @@ public interface SettingService {
     void write(SettingVO set) throws Exception;
     void modify(SettingVO set) throws Exception;
     void remove(Integer bno) throws Exception;
+    void rewrite(SettingVO set) throws Exception;
 }

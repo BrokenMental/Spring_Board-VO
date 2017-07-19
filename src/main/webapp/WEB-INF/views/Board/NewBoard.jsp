@@ -22,14 +22,14 @@
         <thead>
         <tr>
             <th>제목</th>
-            <td><input type="text" name="Title" size="69"></td>
+            <td><input type="text" name="title" size="69"></td>
         </tr>
         <thead>
         </thead>
         <tbody>
         <tr>
             <th>내용</th>
-            <td><textarea name="Contents" cols="70" rows="15" style="resize: none"></textarea></td>
+            <td><textarea name="contents" cols="70" rows="15" style="resize: none"></textarea></td>
         </tr>
         </tbody>
         <tfoot>

@@ -48,4 +48,8 @@ public class SettingServiceImpl implements SettingService {
         dao.remove(bno);
     }
 
+    @Override
+    public void rewrite(SettingVO set) throws Exception {
+        dao.write(set);
+    }
 }

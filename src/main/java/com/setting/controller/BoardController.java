@@ -2,6 +2,7 @@ package com.setting.controller;
 
 import com.setting.domain.SettingVO;
 import com.setting.service.SettingService;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -67,6 +68,20 @@ public class BoardController {
     public String RemoveBoard(@RequestParam("bno") int bno) throws Exception{
         logger.info("============|BOARD REMOVE|=============");
         service.remove(bno);
+        return "redirect:/";
+    }
+
+    @RequestMapping(value = "/ReBoard", method = RequestMethod.GET)
+    public void ReBoardGET(int bno, Model model) throws Exception{
+        logger.info("=========|BOARD RE BOARD GET|==========");
+        model.addAttribute(service.read(bno));
+    }
+
+    @RequestMapping(value = "/ReBoard", method = RequestMethod.POST)
+    public String ReBoardPOST(SettingVO set) throws Exception{
+        logger.info("===========|BOARD RE BOARD POST|============");
+        logger.info(set.toString());
+        service.rewrite(set);
         return "redirect:/";
     }
 }

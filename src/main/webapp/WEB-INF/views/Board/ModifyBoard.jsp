@@ -29,11 +29,11 @@
         <tbody>
         <tr>
             <th>제목</th>
-            <td><input type="text" name="Title" size="69" value="${settingVO.title}"></td>
+            <td><input type="text" name="title" size="69" value="${settingVO.title}"></td>
         </tr>
         <tr>
             <th>내용</th>
-            <td><textarea name="Contents" cols="70" rows="15"
+            <td><textarea name="contents" cols="70" rows="15"
                           style="resize: none">${settingVO.contents}</textarea></td>
         </tr>
         </tbody>
