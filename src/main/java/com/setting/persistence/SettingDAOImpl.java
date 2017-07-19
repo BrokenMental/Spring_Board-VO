@@ -46,4 +46,9 @@ public class SettingDAOImpl implements SettingDAO{
     public void remove(Integer bno) throws Exception {
         session.delete(namespace + ".remove", bno);
     }
+
+    @Override
+    public void hit(Integer hit) throws Exception {
+        session.update(namespace + ".hit", hit);
+    }
 }

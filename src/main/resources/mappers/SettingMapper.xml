@@ -11,7 +11,7 @@
     </select>
 
     <select id="read" resultType="SettingVO">
-        SELECT BNO, TITLE, CONTENTS
+        SELECT BNO, TITLE, CONTENTS, HIT
         FROM SETTING
         WHERE BNO = #{bno}
     </select>
@@ -34,9 +34,11 @@
         WHERE BNO = #{bno}
     </delete>
 
+    <!-- 가장 안쪽의 SELECT에서 특정 bno에 맞는 HIT를 찾아주는데, 이 쿼리를 하나의 테이블로 나타내주기 위해 as x를 사용한다.
+    그 다음 SELECT에서 x테이블에서 찾았던 HIT를 +1 해주고, 그 값을 마지막 UPDATE문의 특정 bno를 통해 찾은 HIT에 넣어준다. -->
     <update id="hit">
         UPDATE SETTING
-        SET HIT = #{hit} + 1
+        SET HIT = (SELECT HIT+1 FROM (SELECT HIT FROM SETTING WHERE BNO = #{bno}) as x)
         WHERE BNO = #{bno}
     </update>
 </mapper>

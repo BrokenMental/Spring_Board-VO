@@ -11,7 +11,8 @@
 <head>
     <title>New Board</title>
 </head>
-<body>
+<body style="text-align: center">
+<h2>게시판 생성</h2>
 <form method="post">
     <table width="600" style="margin: auto">
         <colgroup>

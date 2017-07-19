@@ -29,6 +29,7 @@ public class SettingServiceImpl implements SettingService {
 
     @Override
     public SettingVO read(Integer bno) throws Exception {
+        dao.hit(bno);
         return dao.read(bno);
     }
 
@@ -46,4 +47,5 @@ public class SettingServiceImpl implements SettingService {
     public void remove(Integer bno) throws Exception {
         dao.remove(bno);
     }
+
 }

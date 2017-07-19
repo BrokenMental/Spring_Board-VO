@@ -27,20 +27,19 @@ public class BoardController {
     @RequestMapping(value = "/ListBoard", method = RequestMethod.GET)
     public void ListBoardGET(SettingVO set, Model model, Locale locale) throws Exception{
         logger.info("Welcome home! The client locale is {}.", locale);
+        logger.info("===============|BOARD LIST|===============");
         model.addAttribute("list", service.list(set));
     }
 
     @RequestMapping(value = "/NewBoard", method = RequestMethod.GET)
     public void NewBoardGET() throws Exception{
         logger.info("===============|BOARD NEW GET|===============");
-
         //return "Board/NewBoard"; // void가 아닌 다른 타입으로 반환형을 선언할 경우 필요
     }
 
     @RequestMapping(value = "/NewBoard", method = RequestMethod.POST)
     public String NewBoardPOST(SettingVO set) throws Exception{
         logger.info("==============|BOARD NEW POST|===============");
-
         service.write(set);
         return "redirect:/";
     }

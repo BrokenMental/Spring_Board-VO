@@ -12,7 +12,8 @@
 <head>
     <title>Read Board</title>
 </head>
-<body>
+<body style="text-align: center">
+<h2>게시물 상세보기</h2>
 <form id="Form" action="ModifyBoard" method="get">
     <input type="hidden" name="bno" value="${settingVO.bno}">
 </form>
@@ -26,6 +27,10 @@
         <tr>
             <th>번호</th>
             <td>${settingVO.bno}</td>
+        </tr>
+        <tr>
+            <th>조회수</th>
+            <td>${settingVO.hit}</td>
         </tr>
         </thead>
         <tbody>

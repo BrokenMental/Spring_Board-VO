@@ -12,7 +12,8 @@
 <head>
     <title>Modify Board</title>
 </head>
-<body>
+<body style="text-align: center">
+<h2>게시물 수정</h2>
 <form method="post">
     <table width="600" style="margin: auto">
         <colgroup>

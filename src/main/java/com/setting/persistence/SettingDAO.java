@@ -15,4 +15,5 @@ public interface SettingDAO {
     void write(SettingVO set) throws Exception;
     void modify(SettingVO set) throws Exception;
     void remove(Integer bno) throws Exception;
+    void hit(Integer hit) throws Exception;
 }
