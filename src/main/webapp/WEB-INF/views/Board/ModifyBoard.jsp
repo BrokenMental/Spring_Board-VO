@@ -22,7 +22,7 @@
         <thead>
         <tr>
             <th>번호</th>
-            <td>${settingVO.idx}</td>
+            <td>${settingVO.bno}</td>
         </tr>
         </thead>
         <tbody>

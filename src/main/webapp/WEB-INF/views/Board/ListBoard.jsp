@@ -11,11 +11,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <html>
 <head>
-    <title>== Setting ==</title>
+    <title>List Board</title>
 </head>
-<body>
+<body style="text-align: center">
 <h2>게시판 조회</h2>
-<table>
+<table style="margin: auto">
     <colgroup>
         <col width="10%"/>
         <col width="*"/>
@@ -32,18 +32,11 @@
     </thead>
     <tbody>
     <c:forEach items="${list}" var="list">
-        <c:choose>
-            <c:when test="list.title == null">
-                <tr>
-                    <td colspan="4"><h1>데이터가 없습니다.</h1></td>
-                </tr>
-            </c:when>
-        </c:choose>
         <tr>
-            <td>${list.idx}</td>
-            <td><a href="ReadBoard?idx=${list.idx}">${list.title}</a></td>
-            <td>${list.crea_dtm}</td>
-            <td>${list.hit_cnt}</td>
+            <td>${list.bno}</td>
+            <td><a href="ReadBoard?bno=${list.bno}">${list.title}</a></td>
+            <td>${list.today}</td>
+            <td>${list.hit}</td>
         </tr>
     </c:forEach>
     </tbody>
@@ -60,7 +53,7 @@
 <script>
     $(document).ready(
         function () {
-            $('#btnNew').on('click', function () {
+            $("#btnNew").on("click", function () {
                 self.location = "NewBoard";
             });
         });

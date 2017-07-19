@@ -28,8 +28,8 @@ public class SettingDAOImpl implements SettingDAO{
     }
 
     @Override
-    public SettingVO read(Integer idx) throws Exception {
-        return session.selectOne(namespace + ".read", idx);
+    public SettingVO read(Integer bno) throws Exception {
+        return session.selectOne(namespace + ".read", bno);
     }
 
     @Override
@@ -40,5 +40,10 @@ public class SettingDAOImpl implements SettingDAO{
     @Override
     public void modify(SettingVO set) throws Exception {
         session.update(namespace + ".modify", set);
+    }
+
+    @Override
+    public void remove(Integer bno) throws Exception {
+        session.delete(namespace + ".remove", bno);
     }
 }

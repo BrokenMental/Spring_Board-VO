@@ -4,44 +4,39 @@
 
 <mapper namespace="com.setting.mappers.SettingMapper">
 
-    <!--<resultMap id="userResultMap" type="com.setting.domain.SettingVO">
-        <result property="idx" column="IDX"/>
-        <result property="title" column="TITLE"/>
-        <result property="hit_cnt" column="HIT_CNT"/>
-        <result property="crea_dtm" column="CREA_DTM"/>
-    </resultMap>
-
-    <select id="list" resultMap="userResultMap">
-        <![CDATA[
-            SELECT IDX, TITLE, HIT_CNT, CREA_DTM
-            FROM SETTING
-            WHERE DEL_GB = 'N'
-            ORDER BY IDX DESC
-        ]]>
-    </select>-->
     <select id="list" resultType="SettingVO">
-        SELECT IDX, TITLE, HIT_CNT, CREA_DTM
+        SELECT BNO, TITLE, HIT, TODAY
         FROM SETTING
-        WHERE DEL_GB = 'N'
-        ORDER BY IDX DESC
+        ORDER BY BNO DESC
     </select>
 
     <select id="read" resultType="SettingVO">
-        SELECT IDX, TITLE, CONTENTS
+        SELECT BNO, TITLE, CONTENTS
         FROM SETTING
-        WHERE IDX = #{IDX}
+        WHERE BNO = #{bno}
     </select>
 
     <insert id="write">
         INSERT INTO SETTING (TITLE, CONTENTS)
-        VALUES(#{Title}, #{Contents})
+        VALUES(#{title}, #{contents})
     </insert>
     
     <update id="modify">
         UPDATE SETTING
         SET
-            TITLE = #{Title},
-            CONTENTS = #{Contents}
-        WHERE IDX = #{Idx}
+            TITLE = #{title},
+            CONTENTS = #{contents}
+        WHERE BNO = #{bno}
+    </update>
+
+    <delete id="remove">
+        DELETE FROM SETTING
+        WHERE BNO = #{bno}
+    </delete>
+
+    <update id="hit">
+        UPDATE SETTING
+        SET HIT = #{hit} + 1
+        WHERE BNO = #{bno}
     </update>
 </mapper>

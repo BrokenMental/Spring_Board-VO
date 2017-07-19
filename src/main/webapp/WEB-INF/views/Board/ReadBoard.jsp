@@ -14,7 +14,7 @@
 </head>
 <body>
 <form id="Form" action="ModifyBoard" method="get">
-    <input type="hidden" name="idx" value="${settingVO.idx}">
+    <input type="hidden" name="bno" value="${settingVO.bno}">
 </form>
 <div>
     <table width="600" style="margin: auto">
@@ -25,7 +25,7 @@
         <thead>
         <tr>
             <th>번호</th>
-            <td>${settingVO.idx}</td>
+            <td>${settingVO.bno}</td>
         </tr>
         </thead>
         <tbody>
@@ -43,6 +43,7 @@
         <tr style="text-align: right">
             <td colspan="2">
                 <button type="submit" id="btnModify">Modify</button>
+                <button type="submit" id="btnRemove">Remove</button>
                 <button id="btnCancel">List</button>
             </td>
         </tr>
@@ -56,7 +57,13 @@
         var form = $("#Form");
 
         $("#btnCancel").on("click", function() {
-            history.back();
+            self.location = "/";
+            /*history.back();*/
+        });
+        $("#btnRemove").on("click", function() {
+            form.attr("action", "RemoveBoard");
+            form.attr("method", "post"); // delete는 post로 보내줘야 한다.
+            form.submit();
         });
         $("#btnModify").on("click", function() {
             form.submit();
