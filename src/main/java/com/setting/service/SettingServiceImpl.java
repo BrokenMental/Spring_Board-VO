@@ -50,6 +50,6 @@ public class SettingServiceImpl implements SettingService {
 
     @Override
     public void rewrite(SettingVO set) throws Exception {
-        dao.write(set);
+        dao.rewrite(set);
     }
 }

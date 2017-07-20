@@ -35,7 +35,7 @@
     <c:forEach items="${list}" var="list">
         <tr>
             <td>${list.bno}</td>
-            <td><a href="ReadBoard?bno=${list.bno}">${list.title}</a></td>
+            <td style="float: left"><a href="ReadBoard?bno=${list.bno}">${list.title}</a></td>
             <td>${list.today}</td>
             <td>${list.hit}</td>
         </tr>

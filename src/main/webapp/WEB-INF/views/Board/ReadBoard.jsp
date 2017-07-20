@@ -15,8 +15,6 @@
 <body style="text-align: center">
 <h2>게시물 상세보기</h2>
 <form id="Form" action="ModifyBoard" method="get">
-    <input type="hidden" name="title" value="${settingVO.title}">
-    <input type="hidden" name="contents" value="${settingVO.contents}">
     <input type="hidden" name="bno" value="${settingVO.bno}">
     <input type="hidden" name="pno" value="${settingVO.pno}">
     <input type="hidden" name="cno" value="${settingVO.cno}">
