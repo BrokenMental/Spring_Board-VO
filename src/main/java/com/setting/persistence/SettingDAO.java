@@ -1,5 +1,6 @@
 package com.setting.persistence;
 
+import com.setting.domain.Criteria;
 import com.setting.domain.SettingVO;
 
 import java.util.List;
@@ -10,6 +11,9 @@ import java.util.Map;
  */
 public interface SettingDAO {
     List<SettingVO> list(SettingVO set) throws Exception;
+    List<SettingVO> listPage(Integer page) throws Exception;
+    List<SettingVO> listCriteria(Criteria cri) throws Exception;
+
     SettingVO read(Integer bno) throws Exception;
 
     void write(SettingVO set) throws Exception;

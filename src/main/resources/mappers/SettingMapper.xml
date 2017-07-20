@@ -72,4 +72,24 @@
         <if test="cno == 0">1,</if>
         #{depth}+1)
     </insert>
+
+    <select id="listPage" resultType="SettingVO">
+        <![CDATA[
+        SELECT *
+        FROM SETTING
+        WHERE BNO > 0
+        ORDER BY BNO DESC, TODAY DESC
+        LIMIT #{page}, 10
+        ]]>
+    </select>
+
+    <select id="listCriteria" resultType="SettingVO">
+        <![CDATA[
+        SELECT *
+        FROM SETTING
+        WHERE BNO > 0
+        ORDER BY BNO DESC, TODAY DESC
+        LIMIT #{pageStart}, #{perPageNum}
+        ]]>
+    </select>
 </mapper>
