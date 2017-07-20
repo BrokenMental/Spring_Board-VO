@@ -9,6 +9,7 @@ public class SettingVO {
     private int bno;
     private String title;
     private String contents;
+    private int root;
     private int pno;
     private int cno;
     private int depth;
@@ -39,6 +40,10 @@ public class SettingVO {
     public void setContents(String contents) {
         this.contents = contents;
     }
+
+    public int getRoot() { return root; }
+
+    public void setRoot(int root) { this.root = root; }
 
     public int getPno() {
         return pno;
@@ -94,11 +99,12 @@ public class SettingVO {
                 "bno=" + bno +
                 ", title='" + title + '\'' +
                 ", contents='" + contents + '\'' +
+                ", root=" + root +
                 ", pno=" + pno +
                 ", cno=" + cno +
                 ", depth=" + depth +
                 ", id='" + id + '\'' +
-                ", day='" + today + '\'' +
+                ", today='" + today + '\'' +
                 ", hit=" + hit +
                 '}';
     }

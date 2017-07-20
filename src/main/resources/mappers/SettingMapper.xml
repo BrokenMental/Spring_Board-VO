@@ -5,26 +5,43 @@
 <mapper namespace="com.setting.mappers.SettingMapper">
 
     <select id="list" resultType="SettingVO">
-        SELECT BNO, TITLE, HIT, TODAY
+        SELECT
+            BNO,
+            TITLE,
+            HIT,
+            TODAY,
+            PNO,
+            CNO
         FROM SETTING
-        ORDER BY BNO DESC
+        ORDER BY ROOT DESC, CNO ASC
     </select>
 
     <select id="read" resultType="SettingVO">
-        SELECT BNO, TITLE, CONTENTS, HIT, PNO, CNO, DEPTH
+        SELECT
+            BNO,
+            TITLE,
+            CONTENTS,
+            HIT,
+            ROOT,
+            PNO,
+            CNO,
+            DEPTH
         FROM SETTING
         WHERE BNO = #{bno}
     </select>
 
     <insert id="write">
-        INSERT INTO SETTING (TITLE, CONTENTS)
-        VALUES(#{title}, #{contents})
+        <selectKey resultType="int" keyProperty="pno" order="BEFORE">
+            SELECT ifnull(max(BNO),0)+1 FROM SETTING
+        </selectKey>
+        INSERT INTO SETTING (TITLE, CONTENTS, ROOT, PNO)
+        VALUES(#{title}, #{contents}, #{pno}, #{pno})
     </insert>
-    
+
     <update id="modify">
         UPDATE SETTING
         SET
-            TITLE = #{title},
+            TITLE    = #{title},
             CONTENTS = #{contents}
         WHERE BNO = #{bno}
     </update>
@@ -38,12 +55,21 @@
     그 다음 SELECT에서 x테이블에서 찾았던 HIT를 +1 해주고, 그 값을 마지막 UPDATE문의 특정 bno를 통해 찾은 HIT에 넣어준다. -->
     <update id="hit">
         UPDATE SETTING
-        SET HIT = (SELECT HIT+1 FROM (SELECT HIT FROM SETTING WHERE BNO = #{bno}) as x)
+        SET HIT = (SELECT HIT + 1
+                   FROM (SELECT HIT
+                         FROM SETTING
+                         WHERE BNO = #{bno}) AS x)
         WHERE BNO = #{bno}
     </update>
 
     <insert id="rewrite">
-        INSERT INTO SETTING (TITLE, CONTENTS, PNO, CNO, DEPTH)
-        VALUES(#{title}, #{contents}, #{bno}, #{cno}+1, #{depth}+1)
+        <selectKey resultType="int" keyProperty="cno" order="BEFORE">
+            SELECT MAX(CNO) FROM SETTING WHERE PNO = #{pno}
+        </selectKey>
+        INSERT INTO SETTING (TITLE, CONTENTS, ROOT, PNO, CNO, DEPTH)
+        VALUES(#{title}, #{contents}, #{root}, #{bno},
+        <if test="cno >= 1">#{cno}+1,</if>
+        <if test="cno == 0">1,</if>
+        #{depth}+1)
     </insert>
 </mapper>

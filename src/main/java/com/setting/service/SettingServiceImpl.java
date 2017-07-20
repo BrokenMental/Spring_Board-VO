@@ -28,8 +28,10 @@ public class SettingServiceImpl implements SettingService {
     }
 
     @Override
-    public SettingVO read(Integer bno) throws Exception {
-        dao.hit(bno);
+    public SettingVO read(Integer bno, Integer flag) throws Exception {
+        if(flag == 1){
+            dao.hit(bno);
+        }
         return dao.read(bno);
     }
 

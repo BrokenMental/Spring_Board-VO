@@ -21,6 +21,7 @@ import java.util.Locale;
 @RequestMapping(value = "/Board")
 public class BoardController {
     Logger logger = LoggerFactory.getLogger(this.getClass());
+    int flag = 0;
 
     @Inject
     SettingService service;
@@ -41,6 +42,7 @@ public class BoardController {
     @RequestMapping(value = "/NewBoard", method = RequestMethod.POST)
     public String NewBoardPOST(SettingVO set) throws Exception{
         logger.info("==============|BOARD NEW POST|===============");
+        logger.info(set.toString());
         service.write(set);
         return "redirect:/";
     }
@@ -48,13 +50,15 @@ public class BoardController {
     @RequestMapping(value = "/ReadBoard", method = RequestMethod.GET)
     public void ReadBoardGET(@RequestParam("bno") int bno, Model model) throws Exception{
         logger.info("==============|BORAD READ|===============");
-        model.addAttribute(service.read(bno));
+        flag = 1;
+        model.addAttribute(service.read(bno, flag));
     }
 
     @RequestMapping(value = "/ModifyBoard", method = RequestMethod.GET)
     public void ModifyBoardGET(int bno, Model model) throws  Exception{
         logger.info("============|BOARD MODIFY GET|=============");
-        model.addAttribute(service.read(bno));
+        flag = 0;
+        model.addAttribute(service.read(bno, flag));
     }
 
     @RequestMapping(value = "/ModifyBoard", method = RequestMethod.POST)
@@ -72,14 +76,16 @@ public class BoardController {
     }
 
     @RequestMapping(value = "/ReBoard", method = RequestMethod.GET)
-    public void ReBoardGET(int bno, Model model) throws Exception{
-        logger.info("=========|BOARD RE BOARD GET|==========");
-        model.addAttribute(service.read(bno));
+    public void ReBoardGET(int bno, SettingVO set, Model model) throws Exception{
+        logger.info("=========|BOARD RE GET|==========");
+        flag = 0;
+        model.addAttribute(service.read(bno, flag));
+        logger.info(set.toString());
     }
 
     @RequestMapping(value = "/ReBoard", method = RequestMethod.POST)
     public String ReBoardPOST(SettingVO set) throws Exception{
-        logger.info("===========|BOARD RE BOARD POST|============");
+        logger.info("===========|BOARD RE POST|============");
         logger.info(set.toString());
         service.rewrite(set);
         return "redirect:/";
