@@ -1,5 +1,6 @@
 package com.setting.persistence;
 
+import com.setting.domain.Criteria;
 import com.setting.domain.SettingVO;
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
@@ -24,7 +25,23 @@ public class SettingDAOImpl implements SettingDAO{
 
     @Override
     public List<SettingVO> list(SettingVO set) throws Exception {
-        return session.selectList(namespace +".list", set);
+        return session.selectList(namespace + ".list", set);
+    }
+
+    @Override
+    public List<SettingVO> listPage(Integer page) throws Exception {
+
+        if(page <= 0) {
+            page = 1;
+        }
+
+        page = (page -1) * 10;
+        return session.selectList(namespace + ".listPage", page);
+    }
+
+    @Override
+    public List<SettingVO> listCriteria(Criteria cri) throws Exception {
+        return session.selectList(namespace + ".listCriteria", cri);
     }
 
     @Override

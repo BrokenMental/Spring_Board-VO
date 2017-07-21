@@ -1,5 +1,6 @@
 package com.setting.service;
 
+import com.setting.domain.Criteria;
 import com.setting.domain.SettingVO;
 
 import java.util.List;
@@ -11,6 +12,8 @@ import java.util.Map;
 
 public interface SettingService {
     List<SettingVO> list(SettingVO set) throws Exception;
+    List<SettingVO> listCriteria(Criteria cri) throws Exception;
+
     SettingVO read(Integer bno, Integer flag) throws Exception;
 
     void write(SettingVO set) throws Exception;

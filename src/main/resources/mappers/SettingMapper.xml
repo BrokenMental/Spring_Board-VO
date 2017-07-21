@@ -13,7 +13,7 @@
             PNO,
             CNO
         FROM SETTING
-        ORDER BY ROOT DESC, DEPTH ASC
+        ORDER BY ROOT DESC, CNO ASC
     </select>
 
     <select id="read" resultType="SettingVO">
@@ -31,18 +31,12 @@
     </select>
 
     <insert id="write">
-        <selectKey resultType="int" keyProperty="bno" order="BEFORE">
+        <selectKey resultType="int" keyProperty="pno" order="BEFORE">
             SELECT ifnull(max(BNO),0)+1 FROM SETTING
         </selectKey>
-        INSERT INTO SETTING (TITLE, CONTENTS, ROOT, PNO, LVL)
-        VALUES(#{title}, #{contents}, #{bno}, #{bno}, 1)
+        INSERT INTO SETTING (TITLE, CONTENTS, ROOT, PNO)
+        VALUES(#{title}, #{contents}, #{pno}, #{pno})
     </insert>
-
-    <update id="write_con">
-        UPDATE SETTING
-        SET LVL = (SELECT LVL +1 FROM (SELECT LVL FROM SETTING WHERE BNO = #{bno})AS X)
-        WHERE BNO = #{bno}
-    </update>
 
     <update id="modify">
         UPDATE SETTING
@@ -69,7 +63,10 @@
     </update>
 
     <insert id="rewrite">
-        INSERT INTO SETTING (TITLE, CONTENTS, ROOT, PNO, CNO, DEPTH, LVL)
+        <selectKey resultType="int" keyProperty="cno" order="BEFORE">
+            SELECT MAX(CNO) FROM SETTING WHERE PNO = #{pno}
+        </selectKey>
+        INSERT INTO SETTING (TITLE, CONTENTS, ROOT, PNO, CNO, DEPTH)
         VALUES(#{title}, #{contents}, #{root}, #{bno},
         <if test="root == pno">1,</if>
         <if test="root != pno">#{cno}+1,</if>

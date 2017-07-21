@@ -1,5 +1,6 @@
 package com.setting.service;
 
+import com.setting.domain.Criteria;
 import com.setting.domain.SettingVO;
 import com.setting.persistence.SettingDAO;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,11 @@ public class SettingServiceImpl implements SettingService {
     @Override
     public List<SettingVO> list(SettingVO set) throws Exception {
         return dao.list(set);
+    }
+
+    @Override
+    public List<SettingVO> listCriteria(Criteria cri) throws Exception {
+        return dao.listCriteria(cri);
     }
 
     @Override
