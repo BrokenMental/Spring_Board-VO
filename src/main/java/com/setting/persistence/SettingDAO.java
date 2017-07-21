@@ -13,6 +13,8 @@ public interface SettingDAO {
     SettingVO read(Integer bno) throws Exception;
 
     void write(SettingVO set) throws Exception;
+    void write_con(SettingVO set) throws Exception;
+
     void modify(SettingVO set) throws Exception;
     void remove(Integer bno) throws Exception;
     void hit(Integer hit) throws Exception;

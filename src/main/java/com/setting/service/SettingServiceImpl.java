@@ -2,15 +2,10 @@ package com.setting.service;
 
 import com.setting.domain.SettingVO;
 import com.setting.persistence.SettingDAO;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Jinuk on 2017-07-11.
@@ -38,6 +33,12 @@ public class SettingServiceImpl implements SettingService {
     @Override
     public void write(SettingVO set) throws Exception {
         dao.write(set);
+        int num = set.getBno();
+        while(num > 1){
+            num = num-1;
+            set.setBno(num);
+            dao.write_con(set);
+        }
     }
 
     @Override
@@ -53,5 +54,11 @@ public class SettingServiceImpl implements SettingService {
     @Override
     public void rewrite(SettingVO set) throws Exception {
         dao.rewrite(set);
+        int num = set.getBno();
+        while(num > 1){
+            num = num-1;
+            set.setBno(num);
+            dao.write_con(set);
+        }
     }
 }

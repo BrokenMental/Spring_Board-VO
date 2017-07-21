@@ -38,6 +38,11 @@ public class SettingDAOImpl implements SettingDAO{
     }
 
     @Override
+    public void write_con(SettingVO set) throws Exception {
+        session.update(namespace + ".write_con", set);
+    }
+
+    @Override
     public void modify(SettingVO set) throws Exception {
         session.update(namespace + ".modify", set);
     }

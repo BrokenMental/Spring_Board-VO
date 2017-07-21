@@ -13,6 +13,7 @@ public class SettingVO {
     private int pno;
     private int cno;
     private int depth;
+    private int lvl;
     private String id;
     private String today;
     private int hit;
@@ -69,6 +70,14 @@ public class SettingVO {
         this.depth = depth;
     }
 
+    public int getLvl() {
+        return lvl;
+    }
+
+    public void setLvl(int lvl) {
+        this.lvl = lvl;
+    }
+
     public String getId() {
         return id;
     }
@@ -103,6 +112,7 @@ public class SettingVO {
                 ", pno=" + pno +
                 ", cno=" + cno +
                 ", depth=" + depth +
+                ", lvl=" + lvl +
                 ", id='" + id + '\'' +
                 ", today='" + today + '\'' +
                 ", hit=" + hit +
