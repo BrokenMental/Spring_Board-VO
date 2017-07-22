@@ -85,8 +85,8 @@ public class BoardController {
     @RequestMapping(value = "/ReBoard", method = RequestMethod.POST)
     public String ReBoardPOST(SettingVO set) throws Exception{
         logger.info("===========|BOARD RE POST|============");
-        logger.info(set.toString());
         service.rewrite(set);
+        logger.info(set.toString());
         return "redirect:/";
     }
 }

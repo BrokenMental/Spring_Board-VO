@@ -21,6 +21,7 @@
     <input type="hidden" name="pno" value="${settingVO.pno}">
     <input type="hidden" name="cno" value="${settingVO.cno}">
     <input type="hidden" name="depth" value="${settingVO.depth}">
+    <input type="hidden" name="lvl" value="${settingVO.lvl}">
 </form>
 <div>
     <table width="600" style="margin: auto">

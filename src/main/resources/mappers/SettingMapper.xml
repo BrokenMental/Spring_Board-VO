@@ -13,7 +13,7 @@
             PNO,
             CNO
         FROM SETTING
-        ORDER BY ROOT DESC, DEPTH ASC
+        ORDER BY ROOT DESC, LVL ASC
     </select>
 
     <select id="read" resultType="SettingVO">
@@ -25,7 +25,8 @@
             ROOT,
             PNO,
             CNO,
-            DEPTH
+            DEPTH,
+            LVL
         FROM SETTING
         WHERE BNO = #{bno}
     </select>
@@ -77,4 +78,14 @@
         #{lvl}+1)
     </insert><!-- 맨 위의 level이 1을 유지해야 한다. -->
 
+    <update id="lvlup">
+        UPDATE SETTING
+        SET LVL = #{lvl}+1
+        WHERE LVL = #{lvl}
+    </update>
+
+    <select id="maxlvl" resultType="int">
+        SELECT MAX(LVL)
+        FROM SETTING
+    </select>
 </mapper>

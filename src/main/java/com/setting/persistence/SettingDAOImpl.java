@@ -1,15 +1,11 @@
 package com.setting.persistence;
 
-import com.setting.domain.Criteria;
 import com.setting.domain.SettingVO;
 import org.apache.ibatis.session.SqlSession;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import javax.inject.Inject;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Jinuk on 2017-07-11.
@@ -26,22 +22,6 @@ public class SettingDAOImpl implements SettingDAO{
     @Override
     public List<SettingVO> list(SettingVO set) throws Exception {
         return session.selectList(namespace + ".list", set);
-    }
-
-    @Override
-    public List<SettingVO> listPage(Integer page) throws Exception {
-
-        if(page <= 0) {
-            page = 1;
-        }
-
-        page = (page -1) * 10;
-        return session.selectList(namespace + ".listPage", page);
-    }
-
-    @Override
-    public List<SettingVO> listCriteria(Criteria cri) throws Exception {
-        return session.selectList(namespace + ".listCriteria", cri);
     }
 
     @Override
@@ -77,5 +57,15 @@ public class SettingDAOImpl implements SettingDAO{
     @Override
     public void rewrite(SettingVO set) throws Exception {
         session.insert(namespace + ".rewrite", set);
+    }
+
+    @Override
+    public void lvlup(SettingVO set) throws Exception {
+        session.update(namespace + ".lvlup", set);
+    }
+
+    @Override
+    public int maxlvl() throws Exception {
+        return session.selectOne(namespace + ".maxlvl");
     }
 }

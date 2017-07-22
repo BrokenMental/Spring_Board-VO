@@ -1,10 +1,8 @@
 package com.setting.service;
 
-import com.setting.domain.Criteria;
 import com.setting.domain.SettingVO;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Jinuk on 2017-07-11.
@@ -12,7 +10,6 @@ import java.util.Map;
 
 public interface SettingService {
     List<SettingVO> list(SettingVO set) throws Exception;
-    List<SettingVO> listCriteria(Criteria cri) throws Exception;
 
     SettingVO read(Integer bno, Integer flag) throws Exception;
 
