@@ -1,10 +1,7 @@
 package com.setting.controller;
 
-import com.setting.domain.Criteria;
-import com.setting.domain.PageMaker;
 import com.setting.domain.SettingVO;
 import com.setting.service.SettingService;
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -91,25 +88,5 @@ public class BoardController {
         logger.info(set.toString());
         service.rewrite(set);
         return "redirect:/";
-    }
-
-    @RequestMapping(value = "/TestBoard", method = RequestMethod.GET)
-    public void TestBoard(Criteria cri, Model model) throws Exception{
-        logger.info("===========|BOARD TEST GET|============");
-
-        model.addAttribute("list",service.listCriteria(cri));
-    }
-
-    @RequestMapping(value = "/ListPage", method = RequestMethod.GET)
-    public void ListPage(Criteria cri, Model model) throws Exception{
-        logger.info("===========|BOARD PAGE GET|============");
-        logger.info(cri.toString());
-
-        model.addAttribute("list", service.listCriteria(cri));
-        PageMaker pageMaker = new PageMaker();
-        pageMaker.setCri(cri);
-        pageMaker.setTotalCount(131);
-
-        model.addAttribute("pageMaker", pageMaker);
     }
 }
