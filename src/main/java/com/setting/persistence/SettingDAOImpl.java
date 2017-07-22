@@ -45,8 +45,13 @@ public class SettingDAOImpl implements SettingDAO{
     }
 
     @Override
-    public void remove(Integer bno) throws Exception {
-        session.delete(namespace + ".remove", bno);
+    public void remove(SettingVO set) throws Exception {
+        session.delete(namespace + ".remove", set);
+    }
+
+    @Override
+    public void lvldown(SettingVO set) throws Exception {
+        session.update(namespace + ".lvldown", set);
     }
 
     @Override

@@ -68,18 +68,17 @@ public class BoardController {
     }
 
     @RequestMapping(value = "/RemoveBoard", method = RequestMethod.POST)
-    public String RemoveBoard(@RequestParam("bno") int bno) throws Exception{
+    public String RemoveBoard(SettingVO set) throws Exception{
         logger.info("============|BOARD REMOVE|=============");
-        service.remove(bno);
+        service.remove(set);
         return "redirect:/";
     }
 
     @RequestMapping(value = "/ReBoard", method = RequestMethod.GET)
-    public void ReBoardGET(int bno, SettingVO set, Model model) throws Exception{
+    public void ReBoardGET(int bno, Model model) throws Exception{
         logger.info("=========|BOARD RE GET|==========");
         flag = 0;
         model.addAttribute(service.read(bno, flag));
-        logger.info(set.toString());
     }
 
     @RequestMapping(value = "/ReBoard", method = RequestMethod.POST)

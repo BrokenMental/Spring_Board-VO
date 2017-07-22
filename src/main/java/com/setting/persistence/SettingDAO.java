@@ -16,7 +16,8 @@ public interface SettingDAO {
     void write_con(SettingVO set) throws Exception;
 
     void modify(SettingVO set) throws Exception;
-    void remove(Integer bno) throws Exception;
+    void remove(SettingVO set) throws Exception;
+    void lvldown(SettingVO set) throws Exception;
     void hit(Integer hit) throws Exception;
     void rewrite(SettingVO set) throws Exception;
     void lvlup(SettingVO set) throws Exception;

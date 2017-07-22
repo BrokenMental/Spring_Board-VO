@@ -17,14 +17,6 @@ public class SettingServiceImpl implements SettingService {
     @Inject
     private SettingDAO dao;
 
-    public boolean conlvl(String num) {
-        if (num == null) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-
     @Override
     public List<SettingVO> list(SettingVO set) throws Exception {
         return dao.list(set);
@@ -55,35 +47,33 @@ public class SettingServiceImpl implements SettingService {
     }
 
     @Override
-    public void remove(Integer bno) throws Exception {
-        dao.remove(bno);
+    public void remove(SettingVO set) throws Exception {
+        int lvl = set.getLvl()+1;
+        int maxlvl = dao.maxlvl();
+
+        dao.remove(set);
+
+        while (lvl <= maxlvl) {
+            set.setLvl(lvl);
+            dao.lvldown(set);
+
+            lvl +=1;
+        }
     }
 
     @Override
     public void rewrite(SettingVO set) throws Exception {
-        //int num = set.getBno();
         int temp = set.getLvl();
         int lvl = temp+1;
         int maxlvl = dao.maxlvl();
-        System.out.println("temp = "+temp);
-        System.out.println("lvl = "+lvl);
-        System.out.println("maxlvl = "+maxlvl);
-        //boolean flag = conlvl(Integer.toString(lvl));
 
         while (lvl <= maxlvl) {
             set.setLvl(maxlvl);
-            System.out.println("maxlvl = "+maxlvl);
             dao.lvlup(set);
-            System.out.println("pass");
 
             maxlvl -=1;
         }
         set.setLvl(temp);
         dao.rewrite(set);
-        /*while(num > 1){
-            num = num-1;
-            set.setBno(num);
-            dao.write_con(set);
-        }*/
         }
     }

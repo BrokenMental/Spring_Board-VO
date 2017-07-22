@@ -15,7 +15,6 @@
 <h2>게시판 답글</h2>
 <form id="Form" method="post">
     <table width="600" style="margin: auto">
-        <input type="text" value="${settingVO.lvl}">
         <colgroup>
             <col width="10%">
             <col width="70%">
