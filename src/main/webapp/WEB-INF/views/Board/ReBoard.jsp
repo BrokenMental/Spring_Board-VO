@@ -11,12 +11,13 @@
 <%@include file="../include/header.jsp"%>
 <html>
 <head>
+    <link href="../../../resources/bootstrap/css/Board.css" rel="stylesheet" type="text/css" />
     <title>Re Board</title>
 </head>
 <body style="text-align: center">
 <h2>게시판 답글</h2>
 <form id="Form" method="post">
-    <table width="600" style="margin: auto">
+    <table width="600">
         <colgroup>
             <col width="10%">
             <col width="70%">
@@ -47,6 +48,7 @@
 <div style="margin-top: 700px">
     <%@include file="../include/footer.jsp" %>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </body>
 </html>
 <script>

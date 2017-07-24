@@ -9,15 +9,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <%@include file="../include/header.jsp" %>
 <html>
 <head>
+    <link href="../../../resources/bootstrap/css/Board.css" rel="stylesheet" type="text/css" />
     <title>List Board</title>
 </head>
 <body style="text-align: center">
 <h2>게시판 리스트</h2>
-<table style="margin: auto">
+<table>
     <colgroup>
         <col width="10%"/>
         <col width="*"/>
@@ -36,7 +36,7 @@
     <c:forEach items="${list}" var="list">
         <tr>
             <td>${list.bno}</td>
-            <td style="float: left"><a href="ReadBoard?bno=${list.bno}">${list.title}</a></td>
+            <td style="float: left; border: 0px;"><a href="ReadBoard?bno=${list.bno}">${list.title}</a></td>
             <td>${list.today}</td>
             <td>${list.hit}</td>
         </tr>
@@ -60,6 +60,7 @@
 <div style="margin-top: 700px">
     <%@include file="../include/footer.jsp" %>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </body>
 </html>
 <script>

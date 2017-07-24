@@ -7,16 +7,16 @@
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <%@include file="../include/header.jsp"%>
 <html>
 <head>
+    <link href="../../../resources/bootstrap/css/Board.css" rel="stylesheet" type="text/css" />
     <title>New Board</title>
 </head>
 <body style="text-align: center">
 <h2>게시판 생성</h2>
 <form method="post">
-    <table width="600" style="margin: auto">
+    <table width="600">
         <colgroup>
             <col width="10%">
             <col width="70%">
@@ -47,6 +47,7 @@
 <div style="margin-top: 700px">
     <%@include file="../include/footer.jsp" %>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </body>
 </html>
 <script>
