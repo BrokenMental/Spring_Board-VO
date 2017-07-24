@@ -7,9 +7,10 @@
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<%@include file="../include/header.jsp" %>
 <html>
 <head>
     <title>List Board</title>
@@ -25,7 +26,7 @@
     </colgroup>
     <thead>
     <tr>
-        <th scope="col">글번호</th>
+        <th scope="col">글 번호</th>
         <th scope="col">제목</th>
         <th scope="col">작성일</th>
         <th scope="col">조회수</th>
@@ -56,6 +57,9 @@
     </tr>
     </tfoot>
 </table>
+<div style="margin-top: 700px">
+    <%@include file="../include/footer.jsp" %>
+</div>
 </body>
 </html>
 <script>

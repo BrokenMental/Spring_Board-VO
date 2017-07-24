@@ -5,9 +5,11 @@
   Time: 오전 11:18
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<%@include file="../include/header.jsp"%>
 <html>
 <head>
     <title>Modify Board</title>
@@ -48,6 +50,9 @@
         </tfoot>
     </table>
 </form>
+<div style="margin-top: 700px">
+    <%@include file="../include/footer.jsp" %>
+</div>
 </body>
 </html>
 <script>
