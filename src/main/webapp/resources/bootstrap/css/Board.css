@@ -1,0 +1,23 @@
+table {
+    width:650px;
+    border-collapse: collapse;
+    text-align: left;
+    line-height: 1.5;
+    margin: auto;
+
+}
+th {
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    color: #5cb85c;
+    border-bottom: 3px solid #419641;
+}
+td {
+    width: 350px;
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    border-bottom: 1px solid #419641;
+    background: #f3f6f7;
+}
