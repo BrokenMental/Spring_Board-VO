@@ -1,16 +1,8 @@
 package com.setting.controller;
 
-import com.setting.domain.SettingVO;
-import com.setting.service.SettingService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-import javax.inject.Inject;
-import java.util.Locale;
 
 /**
  * Created by Jinuk on 2017-07-07.
@@ -18,13 +10,13 @@ import java.util.Locale;
 
 @Controller // 아래의 클래스가 컨트롤러임을 선언
 public class MainController {
-    Logger logger = LoggerFactory.getLogger(this.getClass());
+    //Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @RequestMapping(value = "/", method = RequestMethod.GET) // 괄호안(value 경로)에 해당하는 파일들에 아래 메서드를 적용한다.
     public String list() throws Exception{
         //logger.debug("debug");
 
-        return "redirect:/Board/ListBoard";
+        return "redirect:/tBoard/ListBoard";
         //return "index"; // 컨트롤러 실행시 매핑 위치에 연결되어야 할 파일명 반환
     }
 

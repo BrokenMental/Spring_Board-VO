@@ -48,7 +48,7 @@ public class SettingServiceImpl implements SettingService {
 
     @Override
     public void remove(SettingVO set) throws Exception {
-        int lvl = set.getLvl()+1;
+        int lvl = set.getLvl() + 1;
         int maxlvl = dao.maxlvl();
 
         dao.remove(set);
@@ -57,23 +57,23 @@ public class SettingServiceImpl implements SettingService {
             set.setLvl(lvl);
             dao.lvldown(set);
 
-            lvl +=1;
+            lvl += 1;
         }
     }
 
     @Override
     public void rewrite(SettingVO set) throws Exception {
         int temp = set.getLvl();
-        int lvl = temp+1;
+        int lvl = temp + 1;
         int maxlvl = dao.maxlvl();
 
         while (lvl <= maxlvl) {
             set.setLvl(maxlvl);
             dao.lvlup(set);
 
-            maxlvl -=1;
+            maxlvl -= 1;
         }
         set.setLvl(temp);
         dao.rewrite(set);
-        }
     }
+}

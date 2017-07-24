@@ -20,14 +20,16 @@
 <table>
     <colgroup>
         <col width="10%"/>
-        <col width="*"/>
-        <col width="25%"/>
+        <col width="35%"/>
         <col width="10%"/>
+        <col width="30%"/>
+        <col width="15%"/>
     </colgroup>
     <thead>
     <tr>
-        <th scope="col">글 번호</th>
+        <th scope="col">번호</th>
         <th scope="col">제목</th>
+        <th scope="col">작성자</th>
         <th scope="col">작성일</th>
         <th scope="col">조회수</th>
     </tr>
@@ -37,13 +39,14 @@
         <tr>
             <td>${list.bno}</td>
             <td style="float: left; border: 0px;"><a href="ReadBoard?bno=${list.bno}">${list.title}</a></td>
+            <td>${list.id}</td>
             <td>${list.today}</td>
             <td>${list.hit}</td>
         </tr>
     </c:forEach>
     <c:if test="${fn:length(list) == 0}">
         <tr>
-            <td colspan="4">
+            <td colspan="5">
                 데이터가 없습니다.
             </td>
         </tr>
@@ -51,7 +54,7 @@
     </tbody>
     <tfoot>
     <tr>
-        <td colspan="4" style="text-align: right">
+        <td colspan="5" style="text-align: right">
             <button id="btnNew">New</button>
         </td>
     </tr>

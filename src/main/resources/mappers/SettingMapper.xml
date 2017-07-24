@@ -10,8 +10,7 @@
             TITLE,
             HIT,
             TODAY,
-            PNO,
-            CNO
+            ID
         FROM SETTING
         ORDER BY ROOT DESC, LVL ASC
     </select>

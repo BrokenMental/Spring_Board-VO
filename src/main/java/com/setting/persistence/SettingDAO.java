@@ -1,5 +1,7 @@
 package com.setting.persistence;
 
+import com.setting.domain.Criteria;
+import com.setting.domain.SearchCriteria;
 import com.setting.domain.SettingVO;
 
 import java.util.List;
@@ -19,6 +21,7 @@ public interface SettingDAO {
     void remove(SettingVO set) throws Exception;
     void lvldown(SettingVO set) throws Exception;
     void hit(Integer hit) throws Exception;
+
     void rewrite(SettingVO set) throws Exception;
     void lvlup(SettingVO set) throws Exception;
     int maxlvl() throws Exception;
