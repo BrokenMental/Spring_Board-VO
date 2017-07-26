@@ -1,11 +1,16 @@
 package com.setting.controller;
 
+import com.setting.domain.PageMaker;
+import com.setting.domain.SearchCriteria;
 import com.setting.domain.SettingVO;
+import com.setting.service.PluginService;
 import com.setting.service.SettingService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,14 +27,23 @@ public class BoardController {
     Logger logger = LoggerFactory.getLogger(this.getClass());
     int flag = 0;
 
-    @Inject
-    SettingService service;
+    @Autowired
+    PluginService servicePlug;
+    @Autowired
+    SettingService serviceSet;
 
     @RequestMapping(value = "/ListBoard", method = RequestMethod.GET)
-    public void ListBoardGET(SettingVO set, Model model, Locale locale) throws Exception{
+    public void ListBoardGET(@ModelAttribute("cri") SearchCriteria cri, Model model, Locale locale) throws Exception{
         logger.info("Welcome home! The client locale is {}.", locale);
-        logger.info("===============|BOARD LIST|===============");
-        model.addAttribute("list", service.list(set));
+        logger.info("===============|tBOARD LIST|===============");
+        logger.info(cri.toString());
+        model.addAttribute("list", servicePlug.listSearchCriteria(cri));
+
+        PageMaker pageMaker = new PageMaker();
+        pageMaker.setCri(cri);
+        pageMaker.setTotalCount(servicePlug.listSearchCount(cri));
+
+        model.addAttribute("pageMaker", pageMaker);
     }
 
     @RequestMapping(value = "/NewBoard", method = RequestMethod.GET)
@@ -42,7 +56,7 @@ public class BoardController {
     public String NewBoardPOST(SettingVO set) throws Exception{
         logger.info("==============|BOARD NEW POST|===============");
         logger.info(set.toString());
-        service.write(set);
+        serviceSet.write(set);
         return "redirect:/";
     }
 
@@ -50,27 +64,28 @@ public class BoardController {
     public void ReadBoardGET(@RequestParam("bno") int bno, Model model) throws Exception{
         logger.info("==============|BORAD READ|===============");
         flag = 1;
-        model.addAttribute(service.read(bno, flag));
+        model.addAttribute(serviceSet.read(bno, flag));
     }
 
     @RequestMapping(value = "/ModifyBoard", method = RequestMethod.GET)
     public void ModifyBoardGET(int bno, Model model) throws  Exception{
         logger.info("============|BOARD MODIFY GET|=============");
         flag = 0;
-        model.addAttribute(service.read(bno, flag));
+        model.addAttribute(serviceSet.read(bno, flag));
     }
 
     @RequestMapping(value = "/ModifyBoard", method = RequestMethod.POST)
     public String ModifyBoardPOST(SettingVO set) throws Exception{
         logger.info("============|BOARD MODIFY POST|=============");
-        service.modify(set);
+        logger.info(set.toString());
+        serviceSet.modify(set);
         return "redirect:/";
     }
 
     @RequestMapping(value = "/RemoveBoard", method = RequestMethod.POST)
     public String RemoveBoard(SettingVO set) throws Exception{
         logger.info("============|BOARD REMOVE|=============");
-        service.remove(set);
+        serviceSet.remove(set);
         return "redirect:/";
     }
 
@@ -78,14 +93,14 @@ public class BoardController {
     public void ReBoardGET(int bno, Model model) throws Exception{
         logger.info("=========|BOARD RE GET|==========");
         flag = 0;
-        model.addAttribute(service.read(bno, flag));
+        model.addAttribute(serviceSet.read(bno, flag));
     }
 
     @RequestMapping(value = "/ReBoard", method = RequestMethod.POST)
     public String ReBoardPOST(SettingVO set) throws Exception{
         logger.info("===========|BOARD RE POST|============");
-        service.rewrite(set);
         logger.info(set.toString());
+        serviceSet.rewrite(set);
         return "redirect:/";
     }
 }

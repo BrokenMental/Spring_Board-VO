@@ -17,6 +17,11 @@
 <body style="text-align: center">
 <h2>게시판 답글</h2>
 <form id="Form" method="post">
+    <input type="hidden" name="root" value="${settingVO.root}">
+    <input type="hidden" name="pno" value="${settingVO.pno}">
+    <input type="hidden" name="cno" value="${settingVO.cno}">
+    <input type="hidden" name="depth" value="${settingVO.depth}">
+    <input type="hidden" name="lvl" value="${settingVO.lvl}">
     <table width="600">
         <colgroup>
             <col width="10%">
@@ -39,7 +44,7 @@
         <tr style="text-align: right">
             <td colspan="2">
                 <button type="submit" id="btnWrite">Write</button>
-                <button id="btnCancel">Cancel</button>
+                <button type="button" id="btnCancel">Cancel</button>
             </td>
         </tr>
         </tfoot>

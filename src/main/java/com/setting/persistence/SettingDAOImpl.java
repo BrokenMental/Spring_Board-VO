@@ -61,6 +61,7 @@ public class SettingDAOImpl implements SettingDAO{
 
     @Override
     public void rewrite(SettingVO set) throws Exception {
+        System.out.println("출력되는것좀 보자(4) ==> "+set);
         session.insert(namespace + ".rewrite", set);
     }
 

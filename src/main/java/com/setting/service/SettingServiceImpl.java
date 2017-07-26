@@ -1,7 +1,9 @@
 package com.setting.service;
 
+import ch.qos.logback.core.joran.util.beans.BeanUtil;
 import com.setting.domain.SettingVO;
 import com.setting.persistence.SettingDAO;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
@@ -13,6 +15,7 @@ import java.util.List;
 
 @Service
 public class SettingServiceImpl implements SettingService {
+    //private SettingVO tempVO = new SettingVO();
 
     @Inject
     private SettingDAO dao;
@@ -27,6 +30,11 @@ public class SettingServiceImpl implements SettingService {
         if (flag == 1) {
             dao.hit(bno);
         }
+        /*tempVO = dao.read(bno);
+        return tempVO;*/
+
+        /* VO 복사시에 아래의 명령문을 실행한다. */
+        //BeanUtils.copyProperties(sourceVO,targetVO);
         return dao.read(bno);
     }
 
@@ -66,13 +74,15 @@ public class SettingServiceImpl implements SettingService {
         int temp = set.getLvl();
         int lvl = temp + 1;
         int maxlvl = dao.maxlvl();
-
+        System.out.println("temp ==> "+temp);
+        System.out.println("maxlvl ==> "+maxlvl);
         while (lvl <= maxlvl) {
             set.setLvl(maxlvl);
             dao.lvlup(set);
 
             maxlvl -= 1;
         }
+        //System.out.print("tempVO값 좀 보자 ===> "+tempVO);
         set.setLvl(temp);
         dao.rewrite(set);
     }

@@ -16,16 +16,7 @@
     </select>
 
     <select id="read" resultType="SettingVO">
-        SELECT
-            BNO,
-            TITLE,
-            CONTENTS,
-            HIT,
-            ROOT,
-            PNO,
-            CNO,
-            DEPTH,
-            LVL
+        SELECT *
         FROM SETTING
         WHERE BNO = #{bno}
     </select>

@@ -16,7 +16,7 @@ public class MainController {
     public String list() throws Exception{
         //logger.debug("debug");
 
-        return "redirect:/tBoard/ListBoard";
+        return "redirect:/Board/ListBoard";
         //return "index"; // 컨트롤러 실행시 매핑 위치에 연결되어야 할 파일명 반환
     }
 

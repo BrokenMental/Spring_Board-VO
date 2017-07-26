@@ -16,14 +16,9 @@
 </head>
 <body style="text-align: center">
 <h2>게시물 상세보기</h2>
+<%-- title,contents를 넣을때 중복된 값이 포함되는 이유는 form의 input-name과 아래 table의 input-name이 동일했기 때문이다. --%>
 <form id="Form" action="ModifyBoard" method="get">
-    <%-- title,contents를 넣을때 중복된 값이 포함되는 이유는 form의 input-name과 아래 table의 input-name이 동일했기 때문이다. --%>
     <input type="hidden" name="bno" value="${settingVO.bno}">
-    <input type="hidden" name="root" value="${settingVO.root}">
-    <input type="hidden" name="pno" value="${settingVO.pno}">
-    <input type="hidden" name="cno" value="${settingVO.cno}">
-    <input type="hidden" name="depth" value="${settingVO.depth}">
-    <input type="hidden" name="lvl" value="${settingVO.lvl}">
 </form>
 <div>
     <table>
@@ -34,7 +29,7 @@
         <thead>
         <tr>
             <th>번호</th>
-            <td style="text-align: right;">${settingVO.bno}</td>
+            <td style="text-align: right;"><input type="text" readonly="readonly" style="border: 0px; text-align: right;" value="${settingVO.bno}"></td>
         </tr>
         <tr>
             <th>조회수</th>
@@ -59,7 +54,7 @@
                 <button type="button" id="btnRe" style="float: left">ReBoard</button>
                 <button type="button" id="btnModify">Modify</button>
                 <button type="submit" id="btnRemove">Remove</button>
-                <button id="btnCancel">List</button>
+                <button type="button" id="btnCancel">List</button>
             </td>
         </tr>
         </tfoot>
