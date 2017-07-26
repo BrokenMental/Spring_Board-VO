@@ -16,6 +16,7 @@
     <title>List Board</title>
 </head>
 <body style="text-align: center">
+<h3>id = ${userVO.id}</h3>
 <h2>게시판 리스트</h2>
 <table>
     <colgroup>

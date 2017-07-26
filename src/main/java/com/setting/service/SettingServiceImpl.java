@@ -21,12 +21,12 @@ public class SettingServiceImpl implements SettingService {
     private SettingDAO dao;
 
     @Override
-    public List<SettingVO> list(SettingVO set) throws Exception {
+    public List<SettingVO> list(SettingVO set){
         return dao.list(set);
     }
 
     @Override
-    public SettingVO read(Integer bno, Integer flag) throws Exception {
+    public SettingVO read(Integer bno, Integer flag){
         if (flag == 1) {
             dao.hit(bno);
         }
@@ -39,7 +39,7 @@ public class SettingServiceImpl implements SettingService {
     }
 
     @Override
-    public void write(SettingVO set) throws Exception {
+    public void write(SettingVO set){
         dao.write(set);
         int num = set.getBno();
         while (num > 1) {
@@ -50,12 +50,12 @@ public class SettingServiceImpl implements SettingService {
     }
 
     @Override
-    public void modify(SettingVO set) throws Exception {
+    public void modify(SettingVO set){
         dao.modify(set);
     }
 
     @Override
-    public void remove(SettingVO set) throws Exception {
+    public void remove(SettingVO set){
         int lvl = set.getLvl() + 1;
         int maxlvl = dao.maxlvl();
 
@@ -70,7 +70,7 @@ public class SettingServiceImpl implements SettingService {
     }
 
     @Override
-    public void rewrite(SettingVO set) throws Exception {
+    public void rewrite(SettingVO set){
         int temp = set.getLvl();
         int lvl = temp + 1;
         int maxlvl = dao.maxlvl();

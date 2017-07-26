@@ -9,12 +9,12 @@ import java.util.List;
  */
 
 public interface SettingService {
-    List<SettingVO> list(SettingVO set) throws Exception;
+    List<SettingVO> list(SettingVO set);
 
-    SettingVO read(Integer bno, Integer flag) throws Exception;
+    SettingVO read(Integer bno, Integer flag);
 
-    void write(SettingVO set) throws Exception;
-    void modify(SettingVO set) throws Exception;
-    void remove(SettingVO set) throws Exception;
-    void rewrite(SettingVO set) throws Exception;
+    void write(SettingVO set);
+    void modify(SettingVO set);
+    void remove(SettingVO set);
+    void rewrite(SettingVO set);
 }

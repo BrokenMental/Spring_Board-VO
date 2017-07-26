@@ -10,19 +10,19 @@ import java.util.List;
  * Created by Jinuk on 2017-07-11.
  */
 public interface SettingDAO {
-    List<SettingVO> list(SettingVO set) throws Exception;
+    List<SettingVO> list(SettingVO set);
 
-    SettingVO read(Integer bno) throws Exception;
+    SettingVO read(Integer bno);
 
-    void write(SettingVO set) throws Exception;
-    void write_con(SettingVO set) throws Exception;
+    void write(SettingVO set);
+    void write_con(SettingVO set);
 
-    void modify(SettingVO set) throws Exception;
-    void remove(SettingVO set) throws Exception;
-    void lvldown(SettingVO set) throws Exception;
-    void hit(Integer hit) throws Exception;
+    void modify(SettingVO set);
+    void remove(SettingVO set);
+    void lvldown(SettingVO set);
+    void hit(Integer hit);
 
-    void rewrite(SettingVO set) throws Exception;
-    void lvlup(SettingVO set) throws Exception;
-    int maxlvl() throws Exception;
+    void rewrite(SettingVO set);
+    void lvlup(SettingVO set);
+    int maxlvl();
 }

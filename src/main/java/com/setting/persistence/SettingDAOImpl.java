@@ -20,58 +20,57 @@ public class SettingDAOImpl implements SettingDAO{
     private SqlSession session;
 
     @Override
-    public List<SettingVO> list(SettingVO set) throws Exception {
+    public List<SettingVO> list(SettingVO set){
         return session.selectList(namespace + ".list", set);
     }
 
     @Override
-    public SettingVO read(Integer bno) throws Exception {
+    public SettingVO read(Integer bno){
         return session.selectOne(namespace + ".read", bno);
     }
 
     @Override
-    public void write(SettingVO set) throws Exception {
+    public void write(SettingVO set){
         session.insert(namespace + ".write", set);
     }
 
     @Override
-    public void write_con(SettingVO set) throws Exception {
+    public void write_con(SettingVO set){
         session.update(namespace + ".write_con", set);
     }
 
     @Override
-    public void modify(SettingVO set) throws Exception {
+    public void modify(SettingVO set){
         session.update(namespace + ".modify", set);
     }
 
     @Override
-    public void remove(SettingVO set) throws Exception {
+    public void remove(SettingVO set){
         session.delete(namespace + ".remove", set);
     }
 
     @Override
-    public void lvldown(SettingVO set) throws Exception {
+    public void lvldown(SettingVO set){
         session.update(namespace + ".lvldown", set);
     }
 
     @Override
-    public void hit(Integer hit) throws Exception {
+    public void hit(Integer hit){
         session.update(namespace + ".hit", hit);
     }
 
     @Override
-    public void rewrite(SettingVO set) throws Exception {
-        System.out.println("출력되는것좀 보자(4) ==> "+set);
+    public void rewrite(SettingVO set){
         session.insert(namespace + ".rewrite", set);
     }
 
     @Override
-    public void lvlup(SettingVO set) throws Exception {
+    public void lvlup(SettingVO set){
         session.update(namespace + ".lvlup", set);
     }
 
     @Override
-    public int maxlvl() throws Exception {
+    public int maxlvl(){
         return session.selectOne(namespace + ".maxlvl");
     }
 }

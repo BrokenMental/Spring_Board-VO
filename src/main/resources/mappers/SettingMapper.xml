@@ -23,7 +23,7 @@
 
     <insert id="write">
         <selectKey resultType="int" keyProperty="bno" order="BEFORE">
-            SELECT ifnull(max(BNO),0)+1 FROM SETTING
+            SELECT IFNULL(MAX(BNO),0)+1 FROM SETTING
         </selectKey>
         INSERT INTO SETTING (TITLE, CONTENTS, ROOT, PNO, LVL)
         VALUES(#{title}, #{contents}, #{bno}, #{bno}, 1)

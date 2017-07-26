@@ -40,7 +40,7 @@
         </tr>
         </tbody>
         <tfoot>
-        <tr style="text-align: right">
+        <tr style="text-align: right; border: 0px;">
             <td colspan="2">
                 <button type="submit" id="btnModify">Update</button>
                 <button id="btnCancel">Cancel</button>

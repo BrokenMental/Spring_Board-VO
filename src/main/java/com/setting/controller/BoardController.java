@@ -33,9 +33,8 @@ public class BoardController {
     SettingService serviceSet;
 
     @RequestMapping(value = "/ListBoard", method = RequestMethod.GET)
-    public void ListBoardGET(@ModelAttribute("cri") SearchCriteria cri, Model model, Locale locale) throws Exception{
-        logger.info("Welcome home! The client locale is {}.", locale);
-        logger.info("===============|tBOARD LIST|===============");
+    public void ListBoardGET(@ModelAttribute("cri") SearchCriteria cri, Model model, Locale locale){
+        logger.info("===============|BOARD LIST|===============");
         logger.info(cri.toString());
         model.addAttribute("list", servicePlug.listSearchCriteria(cri));
 
@@ -47,60 +46,60 @@ public class BoardController {
     }
 
     @RequestMapping(value = "/NewBoard", method = RequestMethod.GET)
-    public void NewBoardGET() throws Exception{
+    public void NewBoardGET(){
         logger.info("===============|BOARD NEW GET|===============");
         //return "Board/NewBoard"; // void가 아닌 다른 타입으로 반환형을 선언할 경우 필요
     }
 
     @RequestMapping(value = "/NewBoard", method = RequestMethod.POST)
-    public String NewBoardPOST(SettingVO set) throws Exception{
+    public String NewBoardPOST(SettingVO set){
         logger.info("==============|BOARD NEW POST|===============");
         logger.info(set.toString());
         serviceSet.write(set);
-        return "redirect:/";
+        return "Board/ListBoard";
     }
 
     @RequestMapping(value = "/ReadBoard", method = RequestMethod.GET)
-    public void ReadBoardGET(@RequestParam("bno") int bno, Model model) throws Exception{
-        logger.info("==============|BORAD READ|===============");
+    public void ReadBoardGET(@RequestParam("bno") int bno, Model model){
+        logger.info("==============|BOARD READ|===============");
         flag = 1;
         model.addAttribute(serviceSet.read(bno, flag));
     }
 
     @RequestMapping(value = "/ModifyBoard", method = RequestMethod.GET)
-    public void ModifyBoardGET(int bno, Model model) throws  Exception{
+    public void ModifyBoardGET(int bno, Model model){
         logger.info("============|BOARD MODIFY GET|=============");
         flag = 0;
         model.addAttribute(serviceSet.read(bno, flag));
     }
 
     @RequestMapping(value = "/ModifyBoard", method = RequestMethod.POST)
-    public String ModifyBoardPOST(SettingVO set) throws Exception{
+    public String ModifyBoardPOST(SettingVO set){
         logger.info("============|BOARD MODIFY POST|=============");
         logger.info(set.toString());
         serviceSet.modify(set);
-        return "redirect:/";
+        return "Board/ListBoard";
     }
 
     @RequestMapping(value = "/RemoveBoard", method = RequestMethod.POST)
-    public String RemoveBoard(SettingVO set) throws Exception{
+    public String RemoveBoard(SettingVO set){
         logger.info("============|BOARD REMOVE|=============");
         serviceSet.remove(set);
-        return "redirect:/";
+        return "redirect:/Board/ListBoard";
     }
 
     @RequestMapping(value = "/ReBoard", method = RequestMethod.GET)
-    public void ReBoardGET(int bno, Model model) throws Exception{
+    public void ReBoardGET(int bno, Model model){
         logger.info("=========|BOARD RE GET|==========");
         flag = 0;
         model.addAttribute(serviceSet.read(bno, flag));
     }
 
     @RequestMapping(value = "/ReBoard", method = RequestMethod.POST)
-    public String ReBoardPOST(SettingVO set) throws Exception{
+    public String ReBoardPOST(SettingVO set){
         logger.info("===========|BOARD RE POST|============");
         logger.info(set.toString());
         serviceSet.rewrite(set);
-        return "redirect:/";
+        return "Board/ListBoard";
     }
 }
