@@ -28,21 +28,21 @@ public class MainController {
         logger.info("Welcome home! The client locale is {}.", locale);
         //logger.debug("debug");
 
-        return "Plugin/Login";
+        return "/Plugin/Login";
         //return "index"; // 컨트롤러 실행시 매핑 위치에 연결되어야 할 파일명 반환
     }
 
-    @RequestMapping(value = "/Plugin/Login", method = RequestMethod.GET)
-    public void LoginGET(){
-        logger.info("===============|Login GET Page|===============");
+    @RequestMapping(value = "/doA", method = RequestMethod.GET)
+    public String doA(){
+        logger.info("doA");
+        return "home";
     }
 
-    @RequestMapping(value = "/Plugin/Login", method = RequestMethod.POST)
-    public String LoginPOST(@RequestParam("id") String id, Model model){
-        logger.info("===============|Login POST Page|===============");
-        logger.info(id);
-        model.addAttribute(service.id(id));
-        return "Board/ListBoard";
+    @RequestMapping(value = "/doB", method = RequestMethod.GET)
+    public String doB(Model model){
+        logger.info("doB");
+        model.addAttribute("result", "DOB RESULT");
+        return "home";
     }
 
     /*@RequestMapping("/hello")

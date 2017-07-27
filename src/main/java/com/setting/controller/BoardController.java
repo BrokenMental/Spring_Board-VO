@@ -25,6 +25,7 @@ import java.util.Locale;
 @RequestMapping(value = "/Board")
 public class BoardController {
     Logger logger = LoggerFactory.getLogger(this.getClass());
+    static String session_id;
     int flag = 0;
 
     @Autowired
@@ -33,8 +34,11 @@ public class BoardController {
     SettingService serviceSet;
 
     @RequestMapping(value = "/ListBoard", method = RequestMethod.GET)
-    public void ListBoardGET(@ModelAttribute("cri") SearchCriteria cri, Model model, Locale locale){
+    public void ListBoardGET(@ModelAttribute("cri") SearchCriteria cri,@ModelAttribute("id") String id, Model model){
         logger.info("===============|BOARD LIST|===============");
+        logger.info(id);
+        session_id = id;
+        //model.addAttribute("id", id); //@ModelAttribute("") 를 사용하면 이 문장을 사용하지 않아도 모델로 전달한다.
         logger.info(cri.toString());
         model.addAttribute("list", servicePlug.listSearchCriteria(cri));
 
@@ -46,8 +50,9 @@ public class BoardController {
     }
 
     @RequestMapping(value = "/NewBoard", method = RequestMethod.GET)
-    public void NewBoardGET(){
+    public void NewBoardGET(@ModelAttribute("id") String id){
         logger.info("===============|BOARD NEW GET|===============");
+        logger.info(id);
         //return "Board/NewBoard"; // void가 아닌 다른 타입으로 반환형을 선언할 경우 필요
     }
 
@@ -56,19 +61,21 @@ public class BoardController {
         logger.info("==============|BOARD NEW POST|===============");
         logger.info(set.toString());
         serviceSet.write(set);
-        return "Board/ListBoard";
+        return "redirect:/Board/ListBoard";
     }
 
     @RequestMapping(value = "/ReadBoard", method = RequestMethod.GET)
-    public void ReadBoardGET(@RequestParam("bno") int bno, Model model){
+    public void ReadBoardGET(@RequestParam("bno") int bno, @ModelAttribute("cri") SearchCriteria cri, @ModelAttribute("id") String id, Model model){
         logger.info("==============|BOARD READ|===============");
+        logger.info("id : " +id);
         flag = 1;
         model.addAttribute(serviceSet.read(bno, flag));
     }
 
     @RequestMapping(value = "/ModifyBoard", method = RequestMethod.GET)
-    public void ModifyBoardGET(int bno, Model model){
+    public void ModifyBoardGET(int bno,@ModelAttribute("id") String id, Model model){
         logger.info("============|BOARD MODIFY GET|=============");
+        logger.info("id : " +id);
         flag = 0;
         model.addAttribute(serviceSet.read(bno, flag));
     }
@@ -76,9 +83,8 @@ public class BoardController {
     @RequestMapping(value = "/ModifyBoard", method = RequestMethod.POST)
     public String ModifyBoardPOST(SettingVO set){
         logger.info("============|BOARD MODIFY POST|=============");
-        logger.info(set.toString());
         serviceSet.modify(set);
-        return "Board/ListBoard";
+        return "redirect:/Board/ListBoard";
     }
 
     @RequestMapping(value = "/RemoveBoard", method = RequestMethod.POST)
@@ -89,8 +95,9 @@ public class BoardController {
     }
 
     @RequestMapping(value = "/ReBoard", method = RequestMethod.GET)
-    public void ReBoardGET(int bno, Model model){
+    public void ReBoardGET(int bno, @ModelAttribute("id") String id, Model model){
         logger.info("=========|BOARD RE GET|==========");
+        logger.info("id : " +id);
         flag = 0;
         model.addAttribute(serviceSet.read(bno, flag));
     }
@@ -100,6 +107,6 @@ public class BoardController {
         logger.info("===========|BOARD RE POST|============");
         logger.info(set.toString());
         serviceSet.rewrite(set);
-        return "Board/ListBoard";
+        return "redirect:/Board/ListBoard";
     }
 }

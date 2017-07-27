@@ -288,13 +288,15 @@
         <!-- sidebar: style can be found in sidebar.less -->
         <section class="sidebar">
           <!-- Sidebar user panel -->
-          <div class="user-panel">
+          <div class="user-panel" style="position: relative; left: -35px; text-align: left;">
             <div class="pull-left image">
               <br/>
             </div>
             <div class="pull-left info">
-
-              <a href="/Board/ListBoard"><i class="fa fa-circle text-success"></i> TESTING</a>
+              <a href="/Board/ListBoard">
+                <i class="fa fa-circle text-success"></i> Online <br/>
+              </a>
+              [ ${id} 님이 접속중입니다. ]
             </div>
           </div>
 <!--           search form

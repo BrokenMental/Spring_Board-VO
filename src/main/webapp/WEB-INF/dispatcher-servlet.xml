@@ -25,4 +25,12 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
+    <bean id="loginInterceptor" class="com.setting.interceptor.LoginInterceptor"></bean>
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/user/loginPost"/>
+            <ref bean="loginInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
 </beans>

@@ -16,7 +16,8 @@
 </head>
 <body style="text-align: center">
 <h2>게시판 답글</h2>
-<form id="Form" method="post">
+<form method="post">
+    <input type='hidden' name='id' value="${id}">
     <input type="hidden" name="root" value="${settingVO.root}">
     <input type="hidden" name="pno" value="${settingVO.pno}">
     <input type="hidden" name="cno" value="${settingVO.cno}">

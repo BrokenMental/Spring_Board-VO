@@ -25,8 +25,8 @@
         <selectKey resultType="int" keyProperty="bno" order="BEFORE">
             SELECT IFNULL(MAX(BNO),0)+1 FROM SETTING
         </selectKey>
-        INSERT INTO SETTING (TITLE, CONTENTS, ROOT, PNO, LVL)
-        VALUES(#{title}, #{contents}, #{bno}, #{bno}, 1)
+        INSERT INTO SETTING (TITLE, CONTENTS, ROOT, PNO, LVL, ID)
+        VALUES(#{title}, #{contents}, #{bno}, #{bno}, 1, #{id})
     </insert>
 
     <update id="write_con">

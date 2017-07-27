@@ -16,6 +16,7 @@
 <body style="text-align: center">
 <h2>게시판 생성</h2>
 <form method="post">
+    <input type='hidden' name='id' value="${id}">
     <table width="600">
         <colgroup>
             <col width="10%">

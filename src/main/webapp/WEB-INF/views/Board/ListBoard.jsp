@@ -16,7 +16,9 @@
     <title>List Board</title>
 </head>
 <body style="text-align: center">
-<h3>id = ${userVO.id}</h3>
+<form id="trans_id" action="NewBoard">
+    <input type="hidden" name="id" value="${id}"/>
+</form>
 <h2>게시판 리스트</h2>
 <table>
     <colgroup>
@@ -39,7 +41,7 @@
     <c:forEach items="${list}" var="list">
         <tr>
             <td>${list.bno}</td>
-            <td><a href="ReadBoard${pageMaker.makeSearch(pageMaker.cri.page)}&bno=${list.bno}">${list.title}</a></td>
+            <td><a href="ReadBoard${pageMaker.makeSearch(pageMaker.cri.page)}&bno=${list.bno}&id=${id}">${list.title}</a></td>
             <td>${list.id}</td>
             <td>${list.today}</td>
             <td>${list.hit}</td>
@@ -68,7 +70,7 @@
         </c:if>
         <c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="idx">
             <li <c:out value="${pageMaker.cri.page == idx?'class = active':''}"/>>
-                <a href="ListBoard${pageMaker.makeSearch(idx)}">${idx}</a>
+                <a href="ListBoard${pageMaker.makeSearch(idx)}&id=${id}">${idx}</a>
             </li>
         </c:forEach>
         <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
@@ -111,8 +113,10 @@
 <script>
     $(document).ready(
         function () {
+            var tid = $("form[id='trans_id']");
             $("#btnNew").on("click", function () {
-                self.location = "NewBoard";
+                //tid.attr("action", "NewBoard");
+                tid.submit();
             });
             $('#btnSearch').on("click", function () {
                 self.location = "ListBoard"
