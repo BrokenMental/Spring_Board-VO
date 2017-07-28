@@ -42,7 +42,7 @@
             <th>제목</th>
             <td><input type="text" name="title" value="${settingVO.title}"></td>
             <th>작성자</th>
-            <td><input type="text" name="id" readonly="readonly" value="${settingVO.id}"
+            <td><input type="text" name="id" readonly="readonly" value="${login.id}"
                        style="text-align: right; border: 0px; position: relative; left: 6px;"/></td>
         </tr>
         <tr>
@@ -66,8 +66,6 @@
     <%@include file="../include/footer.jsp" %>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-</body>
-</html>
 <script>
     $(document).ready(function () {
         $("#btnCancel").on('click', function () {
@@ -78,3 +76,5 @@
         });
     });
 </script>
+</body>
+</html>

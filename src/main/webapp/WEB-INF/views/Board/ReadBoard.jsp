@@ -18,7 +18,6 @@
 <h2>게시물 상세보기</h2>
 <%-- title,contents를 넣을때 중복된 값이 포함되는 이유는 form의 input-name과 아래 table의 input-name이 동일했기 때문이다. --%>
 <form id="Form" action="ModifyBoard" method="get">
-    <input type='hidden' name='id' value="${id}">
     <input type='hidden' name='page' value="${cri.page}">
     <input type='hidden' name='perPageNum' value="${cri.perPageNum}">
     <input type='hidden' name='searchType' value="${cri.searchType}">
@@ -35,7 +34,8 @@
             <tr>
                 <th>번호</th>
                 <td colspan="3" style="text-align: right;"><input type="text" name="bno" readonly="readonly"
-                                                      style="border: 0px; text-align: right;" value="${settingVO.bno}">
+                                                                  style="border: 0px; text-align: right;"
+                                                                  value="${settingVO.bno}">
                 </td>
             </tr>
             <tr>
@@ -48,12 +48,13 @@
                 <th>제목</th>
                 <td><input type="text" readonly="readonly" style="border:0px;" value="${settingVO.title}"></td>
                 <th>작성자</th>
-                <td><input type="text" name="id" readonly="readonly" value="${settingVO.id}" style="text-align: right; border: 0px; position: relative; left: 6px;"/></td>
+                <td><input type="text" name="id" readonly="readonly" value="${settingVO.id}"
+                           style="text-align: right; border: 0px; position: relative; left: 6px;"/></td>
             </tr>
             <tr>
                 <th>내용</th>
                 <td colspan="3"><textarea cols="70" rows="15" readonly="readonly"
-                              style="resize: none; border:0px;">${settingVO.contents}</textarea></td>
+                                          style="resize: none; border:0px;">${settingVO.contents}</textarea></td>
             </tr>
             </tbody>
             <tfoot>
@@ -61,8 +62,10 @@
                 <td></td>
                 <td colspan="3">
                     <button type="button" id="btnRe" style="float: left">ReBoard</button>
-                    <button type="button" id="btnModify">Modify</button>
-                    <button type="submit" id="btnRemove">Remove</button>
+                    <c:if test="${login.id == settingVO.id}">
+                        <button type="button" id="btnModify">Modify</button>
+                        <button type="submit" id="btnRemove">Remove</button>
+                    </c:if>
                     <button type="button" id="btnCancel">List</button>
                 </td>
             </tr>

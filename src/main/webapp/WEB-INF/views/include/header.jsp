@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-   
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -24,14 +24,25 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    
+
   </head>
       <!-- jQuery 2.1.4 -->
     <script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
-    
+  <script>
+      $(document).ready(
+          function () {
+              //var tid = $("form[id='trans_id']");
+              $("#btnLogout").on("click", function () {
+                  //tid.attr("action", "NewBoard");
+                  //tid.submit();
+                  self.location = "/Plugin/Login";
+              });
+          });
+  </script>
+
   <body class="skin-green sidebar-mini">
     <div class="wrapper">
-      
+
       <header class="main-header">
         <!-- Logo -->
         <a href="/Board/ListBoard" class="logo">
@@ -49,10 +60,10 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <%--<div class="navbar-custom-menu">
+          <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
               <!-- Messages: style can be found in dropdown.less-->
-              <li class="dropdown messages-menu">
+              <%--<li class="dropdown messages-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <i class="fa fa-envelope-o"></i>
                   <span class="label label-success">4</span>
@@ -126,9 +137,9 @@
                   </li>
                   <li class="footer"><a href="#">See All Messages</a></li>
                 </ul>
-              </li>
+              </li>--%>
               <!-- Notifications: style can be found in dropdown.less -->
-              <li class="dropdown notifications-menu">
+              <%--<li class="dropdown notifications-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <i class="fa fa-bell-o"></i>
                   <span class="label label-warning">10</span>
@@ -168,9 +179,9 @@
                   </li>
                   <li class="footer"><a href="#">View all</a></li>
                 </ul>
-              </li>
+              </li>--%>
               <!-- Tasks: style can be found in dropdown.less -->
-              <li class="dropdown tasks-menu">
+              <%--<li class="dropdown tasks-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <i class="fa fa-flag-o"></i>
                   <span class="label label-danger">9</span>
@@ -238,22 +249,26 @@
                     <a href="#">View all tasks</a>
                   </li>
                 </ul>
-              </li>
+              </li>--%>
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <span class="hidden-xs">SAMPLE</span>
+                  <i class="fa fa-gears"></i>
+                  <span class="hidden-xs">OPTION</span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
                     <p>
-                      	SAMPLE - SAMPLE TAMPLETE
-                      <small>Member since Oct. 2017</small>
+                      <h4 style="color: white;">TESTING - Spring Board</h4>
+                      <h5 style="color: white;">INHA TECHNICAL COLLAGE</h5>
+                      <h6 style="color: white;">COMPUTER SCIENCE <br/> DEVELOPER NAME IS <font color="#fffafa" style="font-weight: bold; font-size: 18px;">JINUK HA</font></h6>
+                      <h6 style="color: white;">DEVELOP SCHEDULE 2017-07-03 ~ 28</h6>
                     </p>
+                      <button type="submit" class="btn btn-primary btn-block btn-flat" id="btnLogout">LOGOUT</button>
                   </li>
                   <!-- Menu Body -->
-                  <li class="user-body">
+                  <%--<li class="user-body">
                     <div class="col-xs-4 text-center">
                       <a href="#">Followers</a>
                     </div>
@@ -263,24 +278,24 @@
                     <div class="col-xs-4 text-center">
                       <a href="#">Friends</a>
                     </div>
-                  </li>
+                  </li>--%>
                   <!-- Menu Footer-->
-                  <li class="user-footer">
+                  <%--<li class="user-footer">
                     <div class="pull-left">
                       <a href="#" class="btn btn-default btn-flat">Profile</a>
                     </div>
                     <div class="pull-right">
                       <a href="#" class="btn btn-default btn-flat">Sign out</a>
                     </div>
-                  </li>
+                  </li>--%>
                 </ul>
               </li>
               <!-- Control Sidebar Toggle Button -->
-              <li>
+              <%--<li>
                 <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-              </li>
+              </li>--%>
             </ul>
-          </div>--%>
+          </div>
         </nav>
       </header>
       <!-- Left side column. contains the logo and sidebar -->
@@ -296,7 +311,7 @@
               <a href="/Board/ListBoard">
                 <i class="fa fa-circle text-success"></i> Online <br/>
               </a>
-              [ ${id} 님이 접속중입니다. ]
+              ${login.id}님 안뇽! <%-- 세션에 보관된 객체는 JSP에서 EL을 이용하여 자동으로 추적하는 방식을 사용한다(page -> request -> session -> application 순서). --%>
             </div>
           </div>
 <!--           search form
@@ -417,7 +432,7 @@
                 <li><a href="../examples/lockscreen.html"><i class="fa fa-circle-o"></i> Lockscreen</a></li>
                 <li><a href="../examples/404.html"><i class="fa fa-circle-o"></i> 404 Error</a></li>
                 <li><a href="../examples/500.html"><i class="fa fa-circle-o"></i> 500 Error</a></li>
-                <li><a href="../examples/blank.html"><i class="fa fa-circle-o"></i> Blank Page</a></li>                
+                <li><a href="../examples/blank.html"><i class="fa fa-circle-o"></i> Blank Page</a></li>
               </ul>
             </li>
             <li class="treeview">

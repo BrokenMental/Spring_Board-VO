@@ -16,9 +16,9 @@
     <title>List Board</title>
 </head>
 <body style="text-align: center">
-<form id="trans_id" action="NewBoard">
-    <input type="hidden" name="id" value="${id}"/>
-</form>
+<%--<form id="trans_id" action="/Board/NewBoard">
+    <input type="hidden" name="id" value="${userVO.id}"/>
+</form>--%>
 <h2>게시판 리스트</h2>
 <table>
     <colgroup>
@@ -41,7 +41,7 @@
     <c:forEach items="${list}" var="list">
         <tr>
             <td>${list.bno}</td>
-            <td><a href="ReadBoard${pageMaker.makeSearch(pageMaker.cri.page)}&bno=${list.bno}&id=${id}">${list.title}</a></td>
+            <td><a href="ReadBoard${pageMaker.makeSearch(pageMaker.cri.page)}&bno=${list.bno}&id=${list.id}">${list.title}</a></td>
             <td>${list.id}</td>
             <td>${list.today}</td>
             <td>${list.hit}</td>
@@ -70,7 +70,7 @@
         </c:if>
         <c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="idx">
             <li <c:out value="${pageMaker.cri.page == idx?'class = active':''}"/>>
-                <a href="ListBoard${pageMaker.makeSearch(idx)}&id=${id}">${idx}</a>
+                <a href="ListBoard${pageMaker.makeSearch(idx)}&id=${userVO.id}">${idx}</a>
             </li>
         </c:forEach>
         <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
@@ -108,15 +108,14 @@
     <%@include file="../include/footer.jsp" %>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-</body>
-</html>
 <script>
     $(document).ready(
         function () {
-            var tid = $("form[id='trans_id']");
+            //var tid = $("form[id='trans_id']");
             $("#btnNew").on("click", function () {
                 //tid.attr("action", "NewBoard");
-                tid.submit();
+                //tid.submit();
+                self.location = "/NewBoard";
             });
             $('#btnSearch').on("click", function () {
                 self.location = "ListBoard"
@@ -127,3 +126,5 @@
             });
         });
 </script>
+</body>
+</html>

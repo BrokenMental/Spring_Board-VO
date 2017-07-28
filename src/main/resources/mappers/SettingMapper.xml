@@ -66,12 +66,13 @@
     </update>
 
     <insert id="rewrite">
-        INSERT INTO SETTING (TITLE, CONTENTS, ROOT, PNO, CNO, DEPTH, LVL)
+        INSERT INTO SETTING (TITLE, CONTENTS, ROOT, PNO, CNO, DEPTH, LVL, ID)
         VALUES(#{title}, #{contents}, #{root}, #{bno},
         <if test="root == pno">1,</if>
         <if test="root != pno">#{cno}+1,</if>
         #{depth}+1,
-        #{lvl}+1)
+        #{lvl}+1,
+        #{id})
     </insert><!-- 맨 위의 level이 1을 유지해야 한다. -->
 
     <update id="lvlup">

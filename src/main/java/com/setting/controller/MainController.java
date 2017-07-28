@@ -28,7 +28,7 @@ public class MainController {
         logger.info("Welcome home! The client locale is {}.", locale);
         //logger.debug("debug");
 
-        return "/Plugin/Login";
+        return "redirect:/Plugin/Login";
         //return "index"; // 컨트롤러 실행시 매핑 위치에 연결되어야 할 파일명 반환
     }
 

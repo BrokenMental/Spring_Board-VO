@@ -26,10 +26,17 @@
     </bean>
 
     <bean id="loginInterceptor" class="com.setting.interceptor.LoginInterceptor"></bean>
+    <bean id="authInterceptor" class="com.setting.interceptor.AuthInterceptor"></bean>
+
     <mvc:interceptors>
         <mvc:interceptor>
-            <mvc:mapping path="/user/loginPost"/>
+            <mvc:mapping path="/Plugin/LoginPost"/>
             <ref bean="loginInterceptor"/>
+        </mvc:interceptor>
+
+        <mvc:interceptor>
+            <mvc:mapping path="/Board/NewBoard"/>
+            <ref bean="authInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
 

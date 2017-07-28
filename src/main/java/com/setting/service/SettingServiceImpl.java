@@ -2,12 +2,17 @@ package com.setting.service;
 
 import ch.qos.logback.core.joran.util.beans.BeanUtil;
 import com.setting.domain.SettingVO;
+import com.setting.domain.UserVO;
 import com.setting.persistence.SettingDAO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
+
+import static org.springframework.messaging.simp.stomp.StompHeaders.LOGIN;
 
 /**
  * Created by Jinuk on 2017-07-11.
@@ -39,7 +44,8 @@ public class SettingServiceImpl implements SettingService {
     }
 
     @Override
-    public void write(SettingVO set){
+    public void write(SettingVO set, String id){
+        set.setId(id);
         dao.write(set);
         int num = set.getBno();
         while (num > 1) {
@@ -70,20 +76,18 @@ public class SettingServiceImpl implements SettingService {
     }
 
     @Override
-    public void rewrite(SettingVO set){
+    public void rewrite(SettingVO set, String id){
         int temp = set.getLvl();
         int lvl = temp + 1;
         int maxlvl = dao.maxlvl();
-        System.out.println("temp ==> "+temp);
-        System.out.println("maxlvl ==> "+maxlvl);
         while (lvl <= maxlvl) {
             set.setLvl(maxlvl);
             dao.lvlup(set);
 
             maxlvl -= 1;
         }
-        //System.out.print("tempVO값 좀 보자 ===> "+tempVO);
         set.setLvl(temp);
+        set.setId(id);
         dao.rewrite(set);
     }
 }
