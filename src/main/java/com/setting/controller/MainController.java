@@ -1,14 +1,10 @@
 package com.setting.controller;
 
-import com.setting.service.PluginService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Locale;
 
@@ -20,19 +16,19 @@ import java.util.Locale;
 public class MainController {
     Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @Autowired
-    PluginService service;
+    /*@Autowired
+    PluginService service;*/
 
     @RequestMapping(value = "/", method = RequestMethod.GET) // 괄호안(value 경로)에 해당하는 파일들에 아래 메서드를 적용한다.
-    public String list(Locale locale){
+    public String Login(Locale locale){
         logger.info("Welcome home! The client locale is {}.", locale);
         //logger.debug("debug");
 
-        return "redirect:/Plugin/Login";
+        return "redirect:Plugin/Login";
         //return "index"; // 컨트롤러 실행시 매핑 위치에 연결되어야 할 파일명 반환
     }
 
-    @RequestMapping(value = "/doA", method = RequestMethod.GET)
+    /*@RequestMapping(value = "/doA", method = RequestMethod.GET)
     public String doA(){
         logger.info("doA");
         return "home";
@@ -43,7 +39,7 @@ public class MainController {
         logger.info("doB");
         model.addAttribute("result", "DOB RESULT");
         return "home";
-    }
+    }*/
 
     /*@RequestMapping("/hello")
     public String hello(Model model){

@@ -12,11 +12,12 @@
 
     <!-- css, js 파일들이 들어간 resources 폴더의 경로를 지정해서 사용 할 수 있게끔 해주는 설정 -->
     <mvc:resources mapping="/resources/**" location="/resources/"/>
+    <!--<mvc:default-servlet-handler/>-->
 
     <!-- 해당 패키지의 모듈(Bean)들을 검색하여 로드하라는 의미 -->
     <context:component-scan base-package="com.setting"/>
-    <!-- <context:component-scan base-package="com.setting.controller"/>로 해줄 경우,
-    controller만 검색하기 때문에 그 외(domain,persistence,service 등)의 Bean 들이 인식되지 않을 수가 있다.-->
+    <!--<context:component-scan base-package="com.setting.controller"/>-->
+    <!-- 로 해줄 경우, controller만 검색하기 때문에 그 외(domain,persistence,service 등)의 Bean 들이 인식되지 않을 수가 있다.-->
 
     <!-- property의 정보를 가지고 Controller에서 반환되는 ModelAndView 정보를 가지고 View(jsp 파일)를 찾는 물리적인 경로를 구성한다는 의미 -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -25,7 +26,7 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
-    <bean id="loginInterceptor" class="com.setting.interceptor.LoginInterceptor"></bean>
+    <!--<bean id="loginInterceptor" class="com.setting.interceptor.LoginInterceptor"></bean>
     <bean id="authInterceptor" class="com.setting.interceptor.AuthInterceptor"></bean>
 
     <mvc:interceptors>
@@ -38,6 +39,6 @@
             <mvc:mapping path="/Board/NewBoard"/>
             <ref bean="authInterceptor"/>
         </mvc:interceptor>
-    </mvc:interceptors>
+    </mvc:interceptors>-->
 
 </beans>

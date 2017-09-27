@@ -43,6 +43,7 @@
     </servlet-mapping>
 
     <!-- Error Page 관련 -->
+    <!-- 아래 location 과 같이 URL 매핑을 사용하려면 controller 단에서 mapping 경로를 설정 해 줘야한다. -->
     <error-page>
         <exception-type>java.lang.Throwable</exception-type>
         <location>/ErrorPage/throwable</location>
