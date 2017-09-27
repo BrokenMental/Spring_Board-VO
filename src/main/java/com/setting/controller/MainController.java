@@ -3,6 +3,8 @@ package com.setting.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -24,8 +26,14 @@ public class MainController {
         logger.info("Welcome home! The client locale is {}.", locale);
         //logger.debug("debug");
 
-        return "redirect:Plugin/Login";
+        return "Plugin/Login";
+        // redirect:사용시 404에러
         //return "index"; // 컨트롤러 실행시 매핑 위치에 연결되어야 할 파일명 반환
+    }
+
+    @RequestMapping(value = "Plugin/LoginPost")
+    public void LoginPost(@ModelAttribute("uid") String uid, Model model){
+        model.addAttribute("id",uid);
     }
 
     /*@RequestMapping(value = "/doA", method = RequestMethod.GET)

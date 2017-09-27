@@ -18,7 +18,7 @@ public class ErrorController {
         logger.info("throwable");
         pageErrorLog(request);
         model.addAttribute("msg","throwable 예외 발생");
-        return "/ErrorPage";
+        return "/ErrorPage/Error";
     }
 
     @RequestMapping(value = "/exception")
@@ -26,7 +26,7 @@ public class ErrorController {
         logger.info("exception");
         pageErrorLog(request);
         model.addAttribute("msg","exception 예외 발생");
-        return "/ErrorPage";
+        return "/ErrorPage/Error";
     }
 
     @RequestMapping(value = "/400")
@@ -34,7 +34,7 @@ public class ErrorController {
         logger.info("400 error");
         pageErrorLog(request);
         model.addAttribute("msg","잘못된 요청입니다.");
-        return "/ErrorPage";
+        return "/ErrorPage/Error";
     }
 
     @RequestMapping(value = "/403")
@@ -42,7 +42,7 @@ public class ErrorController {
         logger.info("403 error");
         pageErrorLog(request);
         model.addAttribute("msg","접근이 금지되었습니다.");
-        return "/ErrorPage";
+        return "/ErrorPage/Error";
     }
 
     @RequestMapping(value = "/404")
@@ -50,7 +50,7 @@ public class ErrorController {
         logger.info("404 error");
         pageErrorLog(request);
         model.addAttribute("msg","요청하신 페이지가 존재하지 않습니다.");
-        return "/ErrorPage";
+        return "/ErrorPage/Error";
     }
 
     @RequestMapping(value = "/405")
@@ -58,7 +58,7 @@ public class ErrorController {
         logger.info("405 error");
         pageErrorLog(request);
         model.addAttribute("msg","요청된 메소드가 허용되지 않습니다.");
-        return "/ErrorPage";
+        return "/ErrorPage/Error";
     }
 
     @RequestMapping(value = "/500")
@@ -66,7 +66,7 @@ public class ErrorController {
         logger.info("500 error");
         pageErrorLog(request);
         model.addAttribute("msg","서버에 오류가 생겼습니다.");
-        return "/ErrorPage";
+        return "/ErrorPage/Error";
     }
 
     @RequestMapping(value = "/503")
@@ -74,7 +74,7 @@ public class ErrorController {
         logger.info("503 error");
         pageErrorLog(request);
         model.addAttribute("msg","서비스를 사용할 수 없습니다.");
-        return "/ErrorPage";
+        return "/ErrorPage/Error";
     }
 
     private void pageErrorLog(HttpServletRequest request){

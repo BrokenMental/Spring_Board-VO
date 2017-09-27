@@ -5,13 +5,13 @@
   Time: 오후 12:28
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Login</title>
 </head>
 <body>
-<form action="../Board/ListBoard" method="post">
+<form action="/Board/ListBoard" method="post">
     <div class="form-group has-feedback">
         <input type="text" name="uid" class="form-control" placeholder="USER ID">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>

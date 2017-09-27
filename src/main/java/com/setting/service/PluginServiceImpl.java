@@ -16,19 +16,10 @@ public class PluginServiceImpl implements PluginService {
 	@Inject
 	private PluginDAO dao;
 
-	@Override
-	public List<SettingVO> listCriteria(Criteria cri){
-		return dao.listCriteria(cri);
-	}
 
 	@Override
 	public List<SettingVO> listSearchCriteria(SearchCriteria cri){
 		return dao.listSearch(cri);
-	}
-	
-	@Override
-	public int listCountCriteria(Criteria cri) {
-		return dao.countPaging(cri);
 	}
 
 	@Override
