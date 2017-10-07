@@ -51,26 +51,26 @@
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
     </column>
-    <column id="17" parent="8" name="lvl">
+    <column id="17" parent="8" name="id">
       <Position>8</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-      <DefaultExpression>&apos;1&apos;</DefaultExpression>
-    </column>
-    <column id="18" parent="8" name="id">
-      <Position>9</Position>
       <DataType>varchar(30)|0</DataType>
     </column>
-    <column id="19" parent="8" name="today">
-      <Position>10</Position>
+    <column id="18" parent="8" name="today">
+      <Position>9</Position>
       <DataType>datetime|0</DataType>
       <DefaultExpression>&apos;current_timestamp()&apos;</DefaultExpression>
     </column>
-    <column id="20" parent="8" name="hit">
-      <Position>11</Position>
+    <column id="19" parent="8" name="hit">
+      <Position>10</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="20" parent="8" name="lvl">
+      <Position>11</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;1&apos;</DefaultExpression>
     </column>
     <key id="21" parent="8" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>

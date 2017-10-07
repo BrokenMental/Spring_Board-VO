@@ -42,6 +42,20 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
+    <!-- html,js,css 등 RUN 상황에서 로드되지 못하고 404 되어버리는 파일들을 적용 시키는 방법 -->
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.js</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.css</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.jpg</url-pattern>
+    </servlet-mapping>
+
     <!-- Error Page 관련 -->
     <!-- 아래 location 과 같이 URL 매핑을 사용하려면 controller 단에서 mapping 경로를 설정 해 줘야한다. -->
     <error-page>

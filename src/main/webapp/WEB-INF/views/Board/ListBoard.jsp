@@ -12,7 +12,7 @@
 <%@include file="../include/header.jsp" %>
 <html>
 <head>
-    <link href="../../../resources/bootstrap/css/Board.css" rel="stylesheet" type="text/css" />
+    <link href="/resources/bootstrap/css/Board.css" rel="stylesheet" type="text/css" />
     <title>List Board</title>
 </head>
 <body style="text-align: center">
