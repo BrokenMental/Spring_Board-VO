@@ -37,7 +37,7 @@ public class PluginController {
             return;
         }
 
-        model.addAttribute("userVO", vo);
+        model.addAttribute("userID", vo.getId());
     }
 
 }

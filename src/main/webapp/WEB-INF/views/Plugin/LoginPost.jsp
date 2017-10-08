@@ -11,7 +11,14 @@
 </head>
 <body>
 <script>
-    self.location = "/Board/ListBoard";
+    var id = "${id}";
+    var flag = "${flag}";
+    if(flag == "no"){
+        alert("아이디가 틀렸습니다."+id);
+        self.location = "/";
+    }else if(id != "" && flag == "yes"){
+        self.location = "/Board/ListBoard";
+    }
 </script>
 </body>
 </html>

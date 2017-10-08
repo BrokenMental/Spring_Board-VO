@@ -311,7 +311,7 @@
               <a href="/Board/ListBoard">
                 <i class="fa fa-circle text-success"></i> Online <br/>
               </a>
-              ${login.id}님 안뇽! <%-- 세션에 보관된 객체는 JSP에서 EL을 이용하여 자동으로 추적하는 방식을 사용한다(page -> request -> session -> application 순서). --%>
+              ${id}님 안뇽! <%-- 세션에 보관된 객체는 JSP에서 EL을 이용하여 자동으로 추적하는 방식을 사용한다(page -> request -> session -> application 순서). --%>
             </div>
           </div>
 <!--           search form

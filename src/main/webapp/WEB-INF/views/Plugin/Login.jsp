@@ -12,7 +12,7 @@
     <title>Login</title>
 </head>
 <body>
-<form action="LoginPost" method="post">
+<form name="Login" action="LoginPost" method="post">
     <div class="loginframe">
         <div class="form-group has-feedback">
             <input type="text" name="id" class="form-control" placeholder="USER ID">
@@ -36,5 +36,8 @@
         </div>
     </div>
 </form>
+<script>
+    //입력이 아에 안되었을때 스크립트 작성하기
+</script>
 </body>
 </html>
