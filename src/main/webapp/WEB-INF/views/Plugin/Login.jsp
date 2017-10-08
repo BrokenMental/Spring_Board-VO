@@ -12,14 +12,14 @@
     <title>Login</title>
 </head>
 <body>
-<form action="/Board/ListBoard" method="post">
+<form action="LoginPost" method="post">
     <div class="loginframe">
         <div class="form-group has-feedback">
-            <input type="text" name="uid" class="form-control" placeholder="USER ID">
+            <input type="text" name="id" class="form-control" placeholder="USER ID">
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-            <input type="password" name="upw" class="form-control" placeholder="Password">
+            <input type="password" name="pw" class="form-control" placeholder="Password">
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
         <div class="row">

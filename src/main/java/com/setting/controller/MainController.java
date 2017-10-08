@@ -31,11 +31,6 @@ public class MainController {
         //return "index"; // 컨트롤러 실행시 매핑 위치에 연결되어야 할 파일명 반환
     }
 
-    @RequestMapping(value = "Plugin/LoginPost")
-    public void LoginPost(@ModelAttribute("uid") String uid, Model model){
-        model.addAttribute("id",uid);
-    }
-
     /*@RequestMapping(value = "/doA", method = RequestMethod.GET)
     public String doA(){
         logger.info("doA");

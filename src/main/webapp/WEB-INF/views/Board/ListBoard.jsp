@@ -115,7 +115,7 @@
             $("#btnNew").on("click", function () {
                 //tid.attr("action", "NewBoard");
                 //tid.submit();
-                self.location = "/NewBoard";
+                self.location = "/Board/NewBoard";
             });
             $('#btnSearch').on("click", function () {
                 self.location = "ListBoard"

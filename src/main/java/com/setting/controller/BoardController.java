@@ -65,7 +65,7 @@ public class BoardController {
         logger.info("==============|BOARD NEW POST|===============");
         logger.info(set.toString());
         serviceSet.write(set, ((UserVO) session.getAttribute(LOGIN)).getId());
-        return "redirect:/Board/ListBoard";
+        return "/Board/ListBoard";
     }
 
     @RequestMapping(value = "/ReadBoard", method = RequestMethod.GET)
