@@ -11,13 +11,13 @@
 <%@include file="../include/header.jsp"%>
 <html>
 <head>
-    <link href="../../../resources/bootstrap/css/Board.css" rel="stylesheet" type="text/css" />
+    <link href="/resources/bootstrap/css/Board.css" rel="stylesheet" type="text/css" />
     <title>Re Board</title>
 </head>
 <body style="text-align: center">
 <h2>게시판 답글</h2>
 <form method="post">
-    <%--<input type='hidden' name='id' value="${login.id}">--%> <%-- settingVO에 값이 들어가있는데 여기서 한번 더 post를 하니까 두번 들어간다. --%>
+    <%--<input type='hidden' name='id' value="${id}">--%> <%-- settingVO에 값이 들어가있는데 여기서 한번 더 post를 하니까 두번 들어간다. --%>
     <input type="hidden" name="root" value="${settingVO.root}">
     <input type="hidden" name="pno" value="${settingVO.pno}">
     <input type="hidden" name="cno" value="${settingVO.cno}">

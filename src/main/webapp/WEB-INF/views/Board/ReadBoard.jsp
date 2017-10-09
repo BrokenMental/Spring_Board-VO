@@ -11,7 +11,7 @@
 <%@include file="../include/header.jsp" %>
 <html>
 <head>
-    <link href="../../../resources/bootstrap/css/Board.css" rel="stylesheet" type="text/css"/>
+    <link href="/resources/bootstrap/css/Board.css" rel="stylesheet" type="text/css"/>
     <title>Read Board</title>
 </head>
 <body style="text-align: center">
@@ -62,7 +62,7 @@
                 <td></td>
                 <td colspan="3">
                     <button type="button" id="btnRe" style="float: left">ReBoard</button>
-                    <c:if test="${login.id == settingVO.id}">
+                    <c:if test="${id == settingVO.id}">
                         <button type="button" id="btnModify">Modify</button>
                         <button type="submit" id="btnRemove">Remove</button>
                     </c:if>

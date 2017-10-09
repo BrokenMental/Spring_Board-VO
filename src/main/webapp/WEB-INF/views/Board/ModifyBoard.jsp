@@ -11,7 +11,7 @@
 <%@include file="../include/header.jsp" %>
 <html>
 <head>
-    <link href="../../../resources/bootstrap/css/Board.css" rel="stylesheet" type="text/css"/>
+    <link href="/resources/bootstrap/css/Board.css" rel="stylesheet" type="text/css"/>
     <title>Modify Board</title>
 </head>
 <body style="text-align: center">
@@ -42,7 +42,7 @@
             <th>제목</th>
             <td><input type="text" name="title" value="${settingVO.title}"></td>
             <th>작성자</th>
-            <td><input type="text" name="id" readonly="readonly" value="${login.id}"
+            <td><input type="text" name="id" readonly="readonly" value="${id}"
                        style="text-align: right; border: 0px; position: relative; left: 6px;"/></td>
         </tr>
         <tr>

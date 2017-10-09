@@ -20,7 +20,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
         HttpSession session = request.getSession();
 
-        ModelMap modelMap = modelAndView.getModelMap();
+        ModelMap modelMap = modelAndView.getModelMap(); // LoginPost 에서 model.addAttribute 로 넘긴 값을 받아오기 위해 getModelMap 을 사용.
         Object userID = modelMap.get("userID");
 
         if(userID != null){

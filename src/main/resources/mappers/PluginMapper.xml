@@ -32,26 +32,26 @@
 
     <select id="listSearch" resultType="SettingVO">
         <![CDATA[
-  select *
-  from setting
-  where bno > 0
-]]>
+          SELECT *
+          FROM SETTING
+          WHERE BNO > 0
+        ]]>
 
         <include refid="search"></include>
 
         <![CDATA[
-  order by bno desc
-  limit #{pageStart}, #{perPageNum}
-]]>
+          ORDER BY ROOT DESC, LVL ASC
+          LIMIT #{pageStart}, #{perPageNum}
+        ]]>
     </select>
 
     <select id="listSearchCount" resultType="int">
         <![CDATA[
-  select count(bno)
-  from setting
-  where bno > 0
-]]>
-        <include refid="search"></include>
+          SELECT COUNT(BNO)
+          FROM SETTING
+          WHERE BNO > 0
+        ]]>
 
+        <include refid="search"></include>
     </select>
 </mapper>

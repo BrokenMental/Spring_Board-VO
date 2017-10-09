@@ -40,12 +40,15 @@ public class SettingServiceImpl implements SettingService {
 
         /* VO 복사시에 아래의 명령문을 실행한다. */
         //BeanUtils.copyProperties(sourceVO,targetVO);
-        return dao.read(bno);
+        SettingVO temp = dao.read(bno);
+        temp.setContents(temp.getContents().replace("<br>","\r\n")); //textarea 엔터문제 해결방법
+        return temp;
     }
 
     @Override
     public void write(SettingVO set, String id){
         set.setId(id);
+        set.setContents(set.getContents().replace("\r\n","<br>")); //textarea 엔터문제 해결방법
         dao.write(set);
         int num = set.getBno();
         while (num > 1) {
