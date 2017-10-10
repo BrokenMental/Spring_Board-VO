@@ -6,6 +6,7 @@
 
     <typeAliases>
         <!-- VO 연결을 위해 사용 -->
+        <!-- 이 태그가 없다면 Mapper 에서 resultType 을 FullName 으로 써 줘야 한다.-->
         <package name="com.setting.domain"/>
     </typeAliases>
 
