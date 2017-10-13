@@ -54,4 +54,27 @@
 
         <include refid="search"></include>
     </select>
+
+    <select id="list" resultType="ReplyVO">
+        SELECT
+            *
+        FROM
+            reply
+        WHERE bno = #{bno}
+        ORDER BY rno DESC
+    </select>
+
+    <insert id="create">
+        INSERT INTO reply (bno, replyer, replytext)
+        VALUES (#{bno}, #{replyer}, #{replytext})
+    </insert>
+
+    <update id="update">
+        UPDATE reply SET replytext = #{replytext}, updatedate = now()
+        WHERE rno = #{rno}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM reply WHERE rno = #{rno}
+    </delete>
 </mapper>

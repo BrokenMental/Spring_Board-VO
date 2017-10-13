@@ -11,82 +11,128 @@
     <schema id="5" parent="1" name="performance_schema"/>
     <schema id="6" parent="1" name="test"/>
     <schema id="7" parent="1" name="grid_test"/>
-    <table id="8" parent="2" name="setting"/>
-    <table id="9" parent="2" name="user"/>
-    <column id="10" parent="8" name="bno">
+    <table id="8" parent="2" name="reply"/>
+    <table id="9" parent="2" name="setting"/>
+    <table id="10" parent="2" name="user"/>
+    <column id="11" parent="8" name="rno">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="11" parent="8" name="title">
+    <column id="12" parent="8" name="bno">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="13" parent="8" name="replytext">
+      <Position>3</Position>
+      <DataType>varchar(1000)|0</DataType>
+    </column>
+    <column id="14" parent="8" name="replyer">
+      <Position>4</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="15" parent="8" name="regdate">
+      <Position>5</Position>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;current_timestamp()&apos;</DefaultExpression>
+    </column>
+    <column id="16" parent="8" name="updatedate">
+      <Position>6</Position>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;current_timestamp()&apos;</DefaultExpression>
+    </column>
+    <index id="17" parent="8" name="fk_board">
+      <ColNames>bno</ColNames>
+    </index>
+    <key id="18" parent="8" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>rno</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="19" parent="8" name="fk_board">
+      <ColNames>bno</ColNames>
+      <RefSchemaName>spring_setting</RefSchemaName>
+      <RefTableName>setting</RefTableName>
+      <RefColNames>bno</RefColNames>
+    </foreign-key>
+    <column id="20" parent="9" name="bno">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="21" parent="9" name="title">
       <Position>2</Position>
       <DataType>varchar(100)|0</DataType>
     </column>
-    <column id="12" parent="8" name="contents">
+    <column id="22" parent="9" name="contents">
       <Position>3</Position>
       <DataType>varchar(2000)|0</DataType>
     </column>
-    <column id="13" parent="8" name="root">
+    <column id="23" parent="9" name="root">
       <Position>4</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
     </column>
-    <column id="14" parent="8" name="pno">
+    <column id="24" parent="9" name="pno">
       <Position>5</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
     </column>
-    <column id="15" parent="8" name="cno">
+    <column id="25" parent="9" name="cno">
       <Position>6</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
     </column>
-    <column id="16" parent="8" name="depth">
+    <column id="26" parent="9" name="depth">
       <Position>7</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
     </column>
-    <column id="17" parent="8" name="id">
+    <column id="27" parent="9" name="lvl">
       <Position>8</Position>
-      <DataType>varchar(30)|0</DataType>
-    </column>
-    <column id="18" parent="8" name="today">
-      <Position>9</Position>
-      <DataType>datetime|0</DataType>
-      <DefaultExpression>&apos;current_timestamp()&apos;</DefaultExpression>
-    </column>
-    <column id="19" parent="8" name="hit">
-      <Position>10</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-      <DefaultExpression>&apos;0&apos;</DefaultExpression>
-    </column>
-    <column id="20" parent="8" name="lvl">
-      <Position>11</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;1&apos;</DefaultExpression>
     </column>
-    <key id="21" parent="8" name="PRIMARY">
+    <column id="28" parent="9" name="id">
+      <Position>9</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <column id="29" parent="9" name="today">
+      <Position>10</Position>
+      <DataType>datetime|0</DataType>
+      <DefaultExpression>&apos;current_timestamp()&apos;</DefaultExpression>
+    </column>
+    <column id="30" parent="9" name="hit">
+      <Position>11</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <key id="31" parent="9" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>bno</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="22" parent="9" name="id">
+    <column id="32" parent="10" name="id">
       <Position>1</Position>
       <DataType>varchar(30)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="23" parent="9" name="pw">
+    <column id="33" parent="10" name="pw">
       <Position>2</Position>
       <DataType>varchar(30)|0</DataType>
     </column>
-    <key id="24" parent="9" name="PRIMARY">
+    <key id="34" parent="10" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
