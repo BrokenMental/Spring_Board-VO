@@ -61,6 +61,14 @@ public class ErrorController {
         return "/ErrorPage/Error";
     }
 
+    @RequestMapping(value = "/415")
+    public String pageError415(HttpServletRequest request,Model model){
+        logger.info("415 error");
+        pageErrorLog(request);
+        model.addAttribute("msg","요청이 요청한 페이지에서 지원하지 않는 형식으로 되어 있습니다.");
+        return "/ErrorPage/Error";
+    }
+
     @RequestMapping(value = "/500")
     public String pageError500(HttpServletRequest request,Model model){
         logger.info("500 error");

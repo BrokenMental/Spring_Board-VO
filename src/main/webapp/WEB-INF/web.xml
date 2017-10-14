@@ -25,6 +25,16 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
+    <!-- PUT,PATCH 방식은 제공하지 않는 브라우저에서 POST 방식으로 PUT 방식을 사용 할 수 있게 해주는 필터 -->
+    <filter>
+        <filter-name>hiddenHttpMethodFilter</filter-name>
+        <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>hiddenHttpMethodFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
@@ -81,6 +91,10 @@
     <error-page>
         <error-code>405</error-code>
         <location>/ErrorPage/405</location>
+    </error-page>
+    <error-page>
+        <error-code>415</error-code>
+        <location>/ErrorPage/415</location>
     </error-page>
     <error-page>
         <error-code>500</error-code>
