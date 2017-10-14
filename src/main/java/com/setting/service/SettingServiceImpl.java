@@ -1,18 +1,11 @@
 package com.setting.service;
 
-import ch.qos.logback.core.joran.util.beans.BeanUtil;
 import com.setting.domain.SettingVO;
-import com.setting.domain.UserVO;
 import com.setting.persistence.SettingDAO;
-import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.util.List;
-
-import static org.springframework.messaging.simp.stomp.StompHeaders.LOGIN;
 
 /**
  * Created by Jinuk on 2017-07-11.
