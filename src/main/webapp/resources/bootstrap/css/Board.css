@@ -21,3 +21,15 @@ td {
     border-bottom: 1px solid #419641;
     background: #f3f6f7;
 }
+
+.box-reply {
+    width: 700px;
+    margin: 10px auto;
+    text-align: left;
+}
+
+.box-timeline {
+    width: 700px;
+    margin: auto;
+    text-align: left;
+}
