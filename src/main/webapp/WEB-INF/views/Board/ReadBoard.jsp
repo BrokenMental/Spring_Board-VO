@@ -297,7 +297,7 @@
             dataType: 'text',
             success: function (result) {
                 console.log("result: " + result);
-                if (rsult == 'SUCCESS') {
+                if (result == 'SUCCESS') {
                     alert("삭제 되었습니다.");
                     getPage("/replies/" + bno + "/" + replyPage);
                 }

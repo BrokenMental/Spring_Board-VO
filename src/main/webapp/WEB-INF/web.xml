@@ -35,6 +35,13 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
+    <!--
+    &lt;!&ndash; log4j 사용할 때 필요하다고 하는데 없어도 잘 된다. &ndash;&gt;
+    <listener>
+        <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+    </listener>
+    -->
+
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
