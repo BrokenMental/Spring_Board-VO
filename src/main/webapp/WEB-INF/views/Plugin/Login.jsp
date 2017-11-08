@@ -12,6 +12,8 @@
     <title>Login</title>
 </head>
 <body>
+<h1 id="loginheader">Spring Board</h1>
+<h5 id="loginsubheader">Make By Jinuk HA</h5>
 <form name="Login" action="LoginPost" method="post">
     <div class="loginframe">
         <div class="form-group has-feedback">
