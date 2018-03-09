@@ -29,7 +29,7 @@ import static org.springframework.messaging.simp.stomp.StompHeaders.ID;
 public class BoardController {
     Logger logger = LoggerFactory.getLogger(this.getClass());
     //static String session_id;
-    int flag = 0; // ë©€í‹°ìŠ¤ë ˆë“œ í™˜ê²½ì´ ë˜ë©´ ì¢‹ì§€ì•Šë‹¤. ë°”ê¿”ì£¼ì.
+    int flag = 0; // ¸ÖÆ¼½º·¹µå È¯°æÀÌ µÇ¸é ÁÁÁö¾Ê´Ù. ¹Ù²ãÁÖÀÚ.
 
     @Autowired
     PluginService servicePlug;
@@ -41,7 +41,7 @@ public class BoardController {
         logger.info("===============|BOARD LIST|===============");
         //logger.info(id);
         //session_id = id;
-        //model.addAttribute("id", id); //@ModelAttribute("") ë¥¼ ì‚¬ìš©í•˜ë©´ ì´ ë¬¸ì¥ì„ ì‚¬ìš©í•˜ì§€ ì•Šì•„ë„ ëª¨ë¸ë¡œ ì „ë‹¬í•œë‹¤.
+        //model.addAttribute("id", id); //@ModelAttribute("") ¸¦ »ç¿ëÇÏ¸é ÀÌ ¹®ÀåÀ» »ç¿ëÇÏÁö ¾Ê¾Æµµ ¸ğµ¨·Î Àü´ŞÇÑ´Ù.
         logger.info(cri.toString());
         model.addAttribute("list", servicePlug.listSearchCriteria(cri));
 
@@ -55,7 +55,7 @@ public class BoardController {
     @RequestMapping(value = "/NewBoard", method = RequestMethod.GET)
     public void NewBoardGET(){
         logger.info("===============|BOARD NEW GET|===============");
-        //return "Board/NewBoard"; // voidê°€ ì•„ë‹Œ ë‹¤ë¥¸ íƒ€ì…ìœ¼ë¡œ ë°˜í™˜í˜•ì„ ì„ ì–¸í•  ê²½ìš° í•„ìš”
+        //return "Board/NewBoard"; // void°¡ ¾Æ´Ñ ´Ù¸¥ Å¸ÀÔÀ¸·Î ¹İÈ¯ÇüÀ» ¼±¾ğÇÒ °æ¿ì ÇÊ¿ä
     }
 
     @RequestMapping(value = "/NewBoard", method = RequestMethod.POST)
@@ -64,9 +64,9 @@ public class BoardController {
 
         logger.info("==============|BOARD NEW POST|===============");
         logger.info(set.toString());
-        //erviceSet.write(set, ((UserVO) session.getAttribute(ID)).getId()); // ì˜ˆì „ì—ëŠ” Map í˜•ì‹ìœ¼ë¡œ IDì™€ PWë¥¼ ë™ì‹œì— ë°›ì•˜ì§€ë§Œ ì´ë²ˆì—ëŠ” IDë§Œ session.set í•˜ê¸° ë•Œë¬¸ì— (UserVO)ë³€í™˜ì´ í•„ìš”ì—†ë‹¤.
-        serviceSet.write(set, (String)session.getAttribute(ID)); // session object í˜•ì‹ìœ¼ë¡œ ë°›ìœ¼ë‹ˆê¹Œ String í˜•ìœ¼ë¡œ ë³€í™˜ì‹œì¼œì¤€ë‹¤.
-        return "redirect:/Board/ListBoard"; // redirect ê°€ ì—†ì„ê²½ìš° form ì— action í˜ì´ì§€ê°€ ì •í•´ì ¸ ìˆì§€ ì•Šê¸° ë•Œë¬¸ì¸ì§€ ëª°ë¼ë„ í˜ì´ì§€ëŠ” ì´ë™ë˜ì§€ë§Œ url ì€ board/newboard ë¡œ ë‚¨ì•„ìˆë‹¤.
+        //erviceSet.write(set, ((UserVO) session.getAttribute(ID)).getId()); // ¿¹Àü¿¡´Â Map Çü½ÄÀ¸·Î ID¿Í PW¸¦ µ¿½Ã¿¡ ¹Ş¾ÒÁö¸¸ ÀÌ¹ø¿¡´Â ID¸¸ session.set ÇÏ±â ¶§¹®¿¡ (UserVO)º¯È¯ÀÌ ÇÊ¿ä¾ø´Ù.
+        serviceSet.write(set, (String)session.getAttribute(ID)); // session object Çü½ÄÀ¸·Î ¹ŞÀ¸´Ï±î String ÇüÀ¸·Î º¯È¯½ÃÄÑÁØ´Ù.
+        return "redirect:/Board/ListBoard";  // redirect °¡ ¾øÀ»°æ¿ì form ¿¡ action ÆäÀÌÁö°¡ Á¤ÇØÁ® ÀÖÁö ¾Ê±â ¶§¹®ÀÎÁö ¸ô¶óµµ ÆäÀÌÁö´Â ÀÌµ¿µÇÁö¸¸ url Àº board/newboard ·Î ³²¾ÆÀÖ´Ù.
     }
 
     @RequestMapping(value = "/ReadBoard", method = RequestMethod.GET)

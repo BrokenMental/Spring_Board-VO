@@ -5,6 +5,16 @@
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
+#locaform {
+	position: absolute;
+    /* height: 1500px; */
+    /* width: 2000px; */
+	top: 10%;
+	left: 25%;
+	overflow-x:hidden;
+	overflow-y:hidden;
+}
+
 #loginheader {
     position: relative;
     top: 200px;
