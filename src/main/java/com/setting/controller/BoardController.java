@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import static org.springframework.messaging.simp.stomp.StompHeaders.ID;
+//import static org.springframework.messaging.simp.stomp.StompHeaders.ID;
 
 /**
  * Created by Jinuk on 2017-07-17.
