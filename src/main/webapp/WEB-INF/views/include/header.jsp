@@ -328,7 +328,7 @@
           <ul class="sidebar-menu">
             <!-- <li class="header">MAIN NAVIGATION</li> -->
             <li class="treeview">
-              <a href="#">
+              <a href="/Board/ListBoard">
                 <i class="fa fa-dashboard"></i> <span>Dashboard</span> <%--<i class="fa fa-angle-left pull-right"></i>--%>
               </a>
               <%--<ul class="treeview-menu">

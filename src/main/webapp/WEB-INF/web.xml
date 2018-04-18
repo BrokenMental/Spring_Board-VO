@@ -35,8 +35,8 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
+	<!-- log4j 사용할 때 필요하다고 하는데 없어도 잘 된다. -->
     <!--
-    &lt;!&ndash; log4j 사용할 때 필요하다고 하는데 없어도 잘 된다. &ndash;&gt;
     <listener>
         <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
     </listener>
@@ -73,6 +73,11 @@
         <url-pattern>*.jpg</url-pattern>
     </servlet-mapping>
 
+	<!-- 세션 timeout 관리, 숫자 1은 1분을 의미한다. -->
+	<session-config>
+		<session-timeout>10</session-timeout>
+	</session-config>
+	
     <!-- Error Page 관련 -->
     <!-- 아래 location 과 같이 URL 매핑을 사용하려면 controller 단에서 mapping 경로를 설정 해 줘야한다. -->
     <error-page>

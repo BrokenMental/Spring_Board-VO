@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
 <Configuration>
     <Appenders>
         <Console name="console" target="SYSTEM_OUT">
@@ -19,7 +20,10 @@
     <Logger name="jdbc.resultset" level="off" />
     <Logger name="jdbc.resultsettable" level="off" />
     <Logger name="jdbc.connection" level="off" />
-    <!--
+</Configuration>
+-->
+<!--
+<Configuration>
         <Appenders>
             <Console name="console" target="SYSTEM_OUT">
                 <PatternLayout pattern="%d %5p [%c] %m%n" />
@@ -48,9 +52,8 @@
                 <AppenderRef ref="dailyRollingFileAppender" />
             </Root>
         </Loggers>
-        -->
 </Configuration>
-<!--
+-->
 <Configuration status="INFO">
 <Appenders>
     <File name="File" fileName="/location/log.out"
@@ -69,4 +72,3 @@
     </Root>
 </Loggers>
 </Configuration>
--->

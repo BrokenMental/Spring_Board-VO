@@ -20,7 +20,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
         HttpSession session = request.getSession();
 
-        ModelMap modelMap = modelAndView.getModelMap(); // LoginPost ì—ì„œ model.addAttribute ë¡œ ë„˜ê¸´ ê°’ì„ ë°›ì•„ì˜¤ê¸° ìœ„í•´ getModelMap ì„ ì‚¬ìš©.
+        ModelMap modelMap = modelAndView.getModelMap(); // LoginPost ¿¡¼­ model.addAttribute ·Î ³Ñ±ä °ªÀ» ¹Ş¾Æ¿À±â À§ÇØ getModelMap À» »ç¿ë
         Object userID = modelMap.get("userID");
 
         if(userID != null){

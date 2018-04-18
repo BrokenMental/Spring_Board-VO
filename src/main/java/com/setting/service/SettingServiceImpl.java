@@ -31,17 +31,19 @@ public class SettingServiceImpl implements SettingService {
         /*tempVO = dao.read(bno);
         return tempVO;*/
 
-        /* VO ë³µì‚¬ì‹œì— ì•„ë˜ì˜ ëª…ë ¹ë¬¸ì„ ì‹¤í–‰í•œë‹¤. */
+        /* VO º¹»ç½Ã¿¡ ¾Æ·¡ÀÇ ¸í·É¹®À» ½ÇÇàÇÑ´Ù. */
         //BeanUtils.copyProperties(sourceVO,targetVO);
         SettingVO temp = dao.read(bno);
-        temp.setContents(temp.getContents().replace("<br>","\r\n")); //textarea ì—”í„°ë¬¸ì œ í•´ê²°ë°©ë²•
+        temp.setContents(temp.getContents().replace("<br>","\r\n")); //textarea ¿£ÅÍ¹®Á¦ ÇØ°á¹æ¹ı
         return temp;
     }
 
     @Override
     public void write(SettingVO set, String id){
         set.setId(id);
-        set.setContents(set.getContents().replace("\r\n","<br>")); //textarea ì—”í„°ë¬¸ì œ í•´ê²°ë°©ë²•
+        set.setContents(set.getContents().replace("\r\n","<br>")); //textarea ¿£ÅÍ¹®Á¦ ÇØ°á¹æ¹ı
+        set.setContents(secureco(set.getContents()));
+        set.setTitle(secureco(set.getTitle()));
         dao.write(set);
         int num = set.getBno();
         while (num > 1) {
@@ -85,5 +87,13 @@ public class SettingServiceImpl implements SettingService {
         set.setLvl(temp);
         set.setId(id);
         dao.rewrite(set);
+    }
+
+    /*SQL INJECTION ½ÃÅ¥¾îÄÚµù*/
+    public String secureco(String text){
+        text.replaceAll("<","&#60");
+        text.replaceAll(">","&#62");
+        text.replaceAll("/","&#47");
+    	return text;
     }
 }
