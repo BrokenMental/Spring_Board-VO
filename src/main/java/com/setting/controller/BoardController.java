@@ -65,7 +65,7 @@ public class BoardController {
         logger.info("==============|BOARD NEW POST|===============");
         logger.info(set.toString());
         //erviceSet.write(set, ((UserVO) session.getAttribute(ID)).getId()); // 예전에는 Map 형식으로 ID와 PW를 동시에 받았지만 이번에는 ID만 session.set 하기 때문에 (UserVO)변환이 필요없다.
-        serviceSet.write(set, (String)session.getAttribute(ID)); // session object 형식으로 받으니까 String 형으로 변환시켜준다.
+        serviceSet.write(set, (String)session.getAttribute("")); // session object 형식으로 받으니까 String 형으로 변환시켜준다.
         return "redirect:/Board/ListBoard";  // redirect 가 없을경우 form 에 action 페이지가 정해져 있지 않기 때문인지 몰라도 페이지는 이동되지만 url 은 board/newboard 로 남아있다.
     }
 
@@ -110,7 +110,7 @@ public class BoardController {
 
         logger.info("===========|BOARD RE POST|============");
         logger.info(set.toString());
-        serviceSet.rewrite(set, (String)session.getAttribute(ID));
+        serviceSet.rewrite(set, (String)session.getAttribute(""));
         return "redirect:/Board/ListBoard";
     }
 }

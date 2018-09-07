@@ -1100,12 +1100,15 @@ a:hover, a:active, a:focus {
     margin: 0
 }
 
+/* OPTION dropdown ¸Þ´º */
 .navbar-nav > .user-menu > .dropdown-menu {
     border-top-right-radius: 0;
     border-top-left-radius: 0;
     padding: 1px 0 0 0;
     border-top-width: 0;
-    width: 280px
+    width: 280px;
+    height: 200px;
+    background-color : #00a65a;
 }
 
 .navbar-nav > .user-menu > .dropdown-menu, .navbar-nav > .user-menu > .dropdown-menu > .user-body {
