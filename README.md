@@ -17,3 +17,4 @@
 
 # 변경사항(2019.11.11)
 - Service, DAO Interface 제거, Interface를 상속받으면서 Impl로 나눌 필요가 없음
+- Git 보안설정 com.fasterxml.jackson.core 버전 수정 : 2.8.9 > 2.9.10.1
