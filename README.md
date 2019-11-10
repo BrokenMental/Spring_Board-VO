@@ -1,4 +1,4 @@
-# Spring_Board, Spring 활용 예제
+# Spring_Board, Spring Maven, VO 활용 연습
 - Spring Framework 기반 게시판
 - 답글 & 댓글형
 
