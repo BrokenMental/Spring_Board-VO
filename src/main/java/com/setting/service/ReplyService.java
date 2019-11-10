@@ -1,21 +1,41 @@
 package com.setting.service;
 
-import com.setting.domain.Criteria;
-import com.setting.domain.ReplyVO;
-
 import java.util.List;
 
-public interface ReplyService {
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-    void addReply(ReplyVO vo);
+import com.setting.domain.Criteria;
+import com.setting.domain.ReplyVO;
+import com.setting.persistence.ReplyDAO;
 
-    List<ReplyVO> listReply(Integer bno);
+@Service
+public class ReplyService {
 
-    void modifyReply(ReplyVO vo);
+    @Autowired
+    private ReplyDAO dao;
 
-    void removeReply(Integer rno);
+    public void addReply(ReplyVO vo) {
+        dao.create(vo);
+    }
 
-    List<ReplyVO> listReplyPage(Integer bno, Criteria cri);
+    public List<ReplyVO> listReply(Integer bno) {
+        return dao.list(bno);
+    }
 
-    int count(Integer bno);
+    public void modifyReply(ReplyVO vo) {
+        dao.update(vo);
+    }
+
+    public void removeReply(Integer rno) {
+        dao.delete(rno);
+    }
+
+    public List<ReplyVO> listReplyPage(Integer bno, Criteria cri) {
+        return dao.listPage(bno, cri);
+    }
+
+    public int count(Integer bno) {
+        return dao.count(bno);
+    }
 }

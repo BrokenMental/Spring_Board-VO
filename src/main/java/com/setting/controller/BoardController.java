@@ -1,11 +1,8 @@
 package com.setting.controller;
 
-import com.setting.domain.PageMaker;
-import com.setting.domain.SearchCriteria;
-import com.setting.domain.SettingVO;
-import com.setting.domain.UserVO;
-import com.setting.service.PluginService;
-import com.setting.service.SettingService;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import com.setting.domain.PageMaker;
+import com.setting.domain.SearchCriteria;
+import com.setting.domain.SettingVO;
+import com.setting.service.PluginService;
+import com.setting.service.SettingService;
 
 //import static org.springframework.messaging.simp.stomp.StompHeaders.ID;
 
@@ -29,7 +29,7 @@ import javax.servlet.http.HttpSession;
 public class BoardController {
     Logger logger = LoggerFactory.getLogger(this.getClass());
     //static String session_id;
-    int flag = 0; // ¸ÖÆ¼½º·¹µå È¯°æÀÌ µÇ¸é ÁÁÁö¾Ê´Ù. ¹Ù²ãÁÖÀÚ.
+    int flag = 0; // ï¿½ï¿½Æ¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È¯ï¿½ï¿½ï¿½ï¿½ ï¿½Ç¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ê´ï¿½. ï¿½Ù²ï¿½ï¿½ï¿½ï¿½ï¿½.
 
     @Autowired
     PluginService servicePlug;
@@ -41,7 +41,7 @@ public class BoardController {
         logger.info("===============|BOARD LIST|===============");
         //logger.info(id);
         //session_id = id;
-        //model.addAttribute("id", id); //@ModelAttribute("") ¸¦ »ç¿ëÇÏ¸é ÀÌ ¹®ÀåÀ» »ç¿ëÇÏÁö ¾Ê¾Æµµ ¸ðµ¨·Î Àü´ÞÇÑ´Ù.
+        //model.addAttribute("id", id); //@ModelAttribute("") ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¾Æµï¿½ ï¿½ðµ¨·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
         logger.info(cri.toString());
         model.addAttribute("list", servicePlug.listSearchCriteria(cri));
 
@@ -55,7 +55,7 @@ public class BoardController {
     @RequestMapping(value = "/NewBoard", method = RequestMethod.GET)
     public void NewBoardGET(){
         logger.info("===============|BOARD NEW GET|===============");
-        //return "Board/NewBoard"; // void°¡ ¾Æ´Ñ ´Ù¸¥ Å¸ÀÔÀ¸·Î ¹ÝÈ¯ÇüÀ» ¼±¾ðÇÒ °æ¿ì ÇÊ¿ä
+        //return "Board/NewBoard"; // voidï¿½ï¿½ ï¿½Æ´ï¿½ ï¿½Ù¸ï¿½ Å¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½
     }
 
     @RequestMapping(value = "/NewBoard", method = RequestMethod.POST)
@@ -64,9 +64,9 @@ public class BoardController {
 
         logger.info("==============|BOARD NEW POST|===============");
         logger.info(set.toString());
-        //erviceSet.write(set, ((UserVO) session.getAttribute(ID)).getId()); // ¿¹Àü¿¡´Â Map Çü½ÄÀ¸·Î ID¿Í PW¸¦ µ¿½Ã¿¡ ¹Þ¾ÒÁö¸¸ ÀÌ¹ø¿¡´Â ID¸¸ session.set ÇÏ±â ¶§¹®¿¡ (UserVO)º¯È¯ÀÌ ÇÊ¿ä¾ø´Ù.
-        serviceSet.write(set, (String)session.getAttribute("")); // session object Çü½ÄÀ¸·Î ¹ÞÀ¸´Ï±î String ÇüÀ¸·Î º¯È¯½ÃÄÑÁØ´Ù.
-        return "redirect:/Board/ListBoard";  // redirect °¡ ¾øÀ»°æ¿ì form ¿¡ action ÆäÀÌÁö°¡ Á¤ÇØÁ® ÀÖÁö ¾Ê±â ¶§¹®ÀÎÁö ¸ô¶óµµ ÆäÀÌÁö´Â ÀÌµ¿µÇÁö¸¸ url Àº board/newboard ·Î ³²¾ÆÀÖ´Ù.
+        //erviceSet.write(set, ((UserVO) session.getAttribute(ID)).getId()); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Map ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ IDï¿½ï¿½ PWï¿½ï¿½ ï¿½ï¿½ï¿½Ã¿ï¿½ ï¿½Þ¾ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ IDï¿½ï¿½ session.set ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (UserVO)ï¿½ï¿½È¯ï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½ï¿½.
+        serviceSet.write(set, (String)session.getAttribute("")); // session object ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ String ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ï¿½ï¿½ï¿½ï¿½ï¿½Ø´ï¿½.
+        return "redirect:/Board/ListBoard";  // redirect ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ form ï¿½ï¿½ action ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ url ï¿½ï¿½ board/newboard ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½.
     }
 
     @RequestMapping(value = "/ReadBoard", method = RequestMethod.GET)
